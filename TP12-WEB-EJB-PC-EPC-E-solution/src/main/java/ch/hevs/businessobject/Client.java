@@ -1,77 +1,43 @@
 package ch.hevs.businessobject;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 @Entity
-@Table(name="Client")
-public class Client {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private long id;
-	@Column(name="nom")
-	private String lastname;
-	@Column(name="prenom")
-	private String firstname;
-
-	// relations
-	@OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)//@JoinColumn(name = "FK_CLIENT")
-	private List<Account> accounts;
+public class Client extends Person{
 	
-	
-	// id
-	public long getId() {
-		return id;
+	private String description;
+	private int age;
+	@OneToMany(mappedBy="client", cascade = CascadeType.ALL)
+	private Set<Game> games;
+	public Set<Game> getGames() {
+		return games;
 	}
-	public void setId(long id) {
-		this.id = id;
+	public void setGames(Set<Game> games) {
+		this.games = games;
 	}
-
-	// firstname
-	public String getFirstname() {
-		return firstname;
+	public String getDescription() {
+		return description;
 	}
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+	public void setDescription(String description) {
+		this.description = description;
 	}
-	
-	// lastname
-	public String getLastname() {
-		return lastname;
+	public int getAge() {
+		return age;
 	}
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setAge(int age) {
+		this.age = age;
 	}
-
-	// accounts (From Account)
-	public List<Account> getAccounts() {
-		return accounts;
+	public Client(String description, int age, String firstname, String lastname) {
+		super(firstname, lastname);
+		this.description = description;
+		this.age = age;
 	}
-	public void setAccounts(List<Account> accounts) {
-		this.accounts = accounts;
-	}
-
-	
-	// constructors
 	public Client() {
-	}
-	public Client(String firstname, String lastname) {
-		this.lastname = lastname;
-		this.firstname = firstname;
+		super();
 	}
 	
-	@Override
-	public String toString() {
-		String result = id + "-" + lastname + "-" + firstname;
-		return result;
-	}
 }
