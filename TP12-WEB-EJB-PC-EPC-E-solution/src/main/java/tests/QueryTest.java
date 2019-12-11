@@ -58,6 +58,9 @@ class QueryTest {
 			em.persist(c1);
 			em.persist(c2);
 			
+			em.persist(cat1);
+			em.persist(cat2);
+			
 			tx.commit();
 
 		} catch (Exception e) {
