@@ -26,64 +26,9 @@ class QueryTest {
 
 	@Test
 	void test() {
-		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-			String cmd;
-			while (true) {
-				System.out
-						.println("Write a query [or 'populate' or 'quit']: ");
-				cmd = reader.readLine();
-
-				if ("populate".equals(cmd)) {
-					populate();
-				} else if ("quit".equals(cmd)) {
-					System.out.println("The End");
-					break;
-				} else {
-					executeRequest(cmd);
-				}
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	private static void executeRequest(String cmd) {
-		List result = null;
 		EntityTransaction tx = null;
 		try {
-
-			
 			EntityManagerFactory emf = Persistence.createEntityManagerFactory("videoGame");
-			EntityManager em = emf.createEntityManager();
-			tx = em.getTransaction();
-			tx.begin();
-			result = em.createQuery(cmd).getResultList();
-			Iterator it = result.iterator();
-			while (it.hasNext()) {
-				System.out.println(it.next());
-			}
-			tx.commit();
-
-		} catch (Exception e) {
-			System.err.println(e.getMessage());
-			try {
-				tx.rollback();
-			} catch (IllegalStateException e1) {
-				e1.printStackTrace();
-			} catch (SecurityException e1) {
-				e1.printStackTrace();
-			} 
-		}
-	}
-
-	public static void populate() {
-		EntityTransaction tx = null;
-		try {
-
-			
-			EntityManagerFactory emf = Persistence
-					.createEntityManagerFactory("videoGame");
 			EntityManager em = emf.createEntityManager();
 			tx = em.getTransaction();
 			tx.begin();
@@ -100,14 +45,17 @@ class QueryTest {
 			Game g1 = new Game("Call of Duty Black Ops III", "heavy", 18);
 			Game g2 = new Game("Super Marion", "easy", 6);
 			
-			g1.addCategory(cat1);
+			/*g1.addCategory(cat1);
 			g1.addCategory(cat2);
 			
 			g1.addDeveloper(d1);
 			g2.addDeveloper(d2);
 			
 			c1.addGame(g1);
-			c2.addGame(g2);
+			c2.addGame(g2);*/
+			
+			em.persist(g1);
+			em.persist(g2);
 			
 			tx.commit();
 

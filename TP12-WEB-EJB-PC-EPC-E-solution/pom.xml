@@ -6,6 +6,11 @@
   
 <packaging>war</packaging>
   <dependencies>
+  <dependency>
+		<groupId>javax.persistence</groupId>
+		<artifactId>persistence-api</artifactId>
+		<version>1.0.2</version>
+	</dependency>
   	<dependency>
 		<groupId>javax.faces</groupId>
 		<artifactId>javax.faces-api</artifactId>

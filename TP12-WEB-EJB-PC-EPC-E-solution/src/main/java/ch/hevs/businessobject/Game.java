@@ -20,16 +20,16 @@ public class Game {
 	private String name;
 	private String difficultyLevel;
 	private int ageLimit;
-	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "games")
+	/*@ManyToMany(cascade = CascadeType.ALL, mappedBy = "games")
 	@JoinColumn(nullable = false)
 	private Set<Developer> developers;
 	@ManyToOne
 	private Category category;
 	@ManyToOne
-	private Client client;
+	private Client client;*/
 	
 	
-	public Set<Developer> getDevelopers() {
+	/*public Set<Developer> getDevelopers() {
 		return developers;
 	}
 	public void setDevelopers(Set<Developer> developers) {
@@ -46,7 +46,7 @@ public class Game {
 	}
 	public void setClient(Client client) {
 		this.client = client;
-	}
+	}*/
 	public long getId() {
 		return id;
 	}
@@ -80,7 +80,7 @@ public class Game {
 	}
 	
 	//helper Mehtoden
-	public void addDeveloper(Developer d) {
+	/*public void addDeveloper(Developer d) {
 		developers.add(d);
 		d.addGame(this);
 	}
@@ -88,5 +88,5 @@ public class Game {
 	public void addCategory(Category c) {
 		category = c;
 		c.addGame(this);
-	}
+	}*/
 }
