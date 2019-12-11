@@ -79,4 +79,14 @@ public class Game {
 	public Game() {
 	}
 	
+	//helper Mehtoden
+	public void addDeveloper(Developer d) {
+		developers.add(d);
+		d.addGame(this);
+	}
+	
+	public void addCategory(Category c) {
+		category = c;
+		c.addGame(this);
+	}
 }

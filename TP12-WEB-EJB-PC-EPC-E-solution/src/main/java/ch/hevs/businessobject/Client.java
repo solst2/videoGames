@@ -31,13 +31,18 @@ public class Client extends Person{
 	public void setAge(int age) {
 		this.age = age;
 	}
-	public Client(String description, int age, String firstname, String lastname) {
+	public Client(String firstname, String lastname, String description, int age) {
 		super(firstname, lastname);
 		this.description = description;
 		this.age = age;
 	}
 	public Client() {
 		super();
+	}
+	//helper Methode
+	public void addGame(Game g){
+		games.add(g);
+		g.setClient(this);
 	}
 	
 }

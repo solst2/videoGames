@@ -50,6 +50,8 @@ public class Category {
 	}
 	public Category() {
 	}
-	
-	
+	//helper Methode
+	public void addGame(Game g) {
+		games.add(g);
+	}
 }

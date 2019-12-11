@@ -12,7 +12,6 @@ public class Developer extends Person{
 	private String mail;
 	@ManyToMany(cascade = CascadeType.ALL)
 	private Set<Game> games;
-
 	
 	public Set<Game> getGames() {
 		return games;
@@ -30,13 +29,14 @@ public class Developer extends Person{
 		this.mail = mail;
 	}
 
-	public Developer(String mail, String firstname, String lastname) {
+	public Developer(String firstname, String lastname, String mail) {
 		super(firstname, lastname);
 		this.mail = mail;
 	}
 	public Developer() {
 	}
-	
-	
-
+	//helper Methode
+	public void addGame(Game g) {
+		games.add(g);
+	}
 }
