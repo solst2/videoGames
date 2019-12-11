@@ -1,5 +1,7 @@
 package ch.hevs.businessobject;
 
+import java.io.Console;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -47,11 +49,14 @@ public class Category {
 	public Category(String name, String description) {
 		this.name = name;
 		this.description = description;
+		this.games = new HashSet<Game>();
 	}
 	public Category() {
+		this.games = new HashSet<Game>();
 	}
 	//helper Methode
 	public void addGame(Game g) {
 		games.add(g);
+		g.setCategory(this);
 	}
 }

@@ -28,7 +28,7 @@ class QueryTest {
 	void test() {
 		EntityTransaction tx = null;
 		try {
-			EntityManagerFactory emf = Persistence.createEntityManagerFactory("videoGame");
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("test");
 			EntityManager em = emf.createEntityManager();
 			tx = em.getTransaction();
 			tx.begin();
@@ -45,17 +45,18 @@ class QueryTest {
 			Game g1 = new Game("Call of Duty Black Ops III", "heavy", 18);
 			Game g2 = new Game("Super Marion", "easy", 6);
 			
-			/*g1.addCategory(cat1);
-			g1.addCategory(cat2);
 			
 			g1.addDeveloper(d1);
 			g2.addDeveloper(d2);
 			
-			c1.addGame(g1);
-			c2.addGame(g2);*/
+			cat1.addGame(g1);
+			cat2.addGame(g2);
 			
-			em.persist(g1);
-			em.persist(g2);
+			c1.addGame(g1);
+			c2.addGame(g2);
+			
+			em.persist(c1);
+			em.persist(c2);
 			
 			tx.commit();
 

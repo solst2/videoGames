@@ -1,15 +1,9 @@
 package ch.hevs.businessobject;
 
+import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class Game {
@@ -20,16 +14,16 @@ public class Game {
 	private String name;
 	private String difficultyLevel;
 	private int ageLimit;
-	/*@ManyToMany(cascade = CascadeType.ALL, mappedBy = "games")
-	@JoinColumn(nullable = false)
+	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "games")
+	//@JoinColumn(nullable = false)
 	private Set<Developer> developers;
 	@ManyToOne
 	private Category category;
 	@ManyToOne
-	private Client client;*/
+	private Client client;
 	
 	
-	/*public Set<Developer> getDevelopers() {
+	public Set<Developer> getDevelopers() {
 		return developers;
 	}
 	public void setDevelopers(Set<Developer> developers) {
@@ -46,7 +40,7 @@ public class Game {
 	}
 	public void setClient(Client client) {
 		this.client = client;
-	}*/
+	}
 	public long getId() {
 		return id;
 	}
@@ -75,18 +69,15 @@ public class Game {
 		this.name = name;
 		this.difficultyLevel = difficultyLevel;
 		this.ageLimit = ageLimit;
+		this.developers = new HashSet<Developer>();
 	}
 	public Game() {
+		this.developers = new HashSet<Developer>();
 	}
 	
 	//helper Mehtoden
-	/*public void addDeveloper(Developer d) {
+	public void addDeveloper(Developer d) {
 		developers.add(d);
 		d.addGame(this);
 	}
-	
-	public void addCategory(Category c) {
-		category = c;
-		c.addGame(this);
-	}*/
 }

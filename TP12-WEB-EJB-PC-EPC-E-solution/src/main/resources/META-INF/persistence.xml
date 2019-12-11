@@ -5,13 +5,9 @@
                 http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
 	version="1.0">
 
-	<persistence-unit name="videoGame">
+	<persistence-unit name="test">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>ch.hevs.businessobject.Category</class>
-		<class>ch.hevs.businessobject.Client</class>
-		<class>ch.hevs.businessobject.Developer</class>
 		<class>ch.hevs.businessobject.Game</class>
-		<class>ch.hevs.businessobject.Person</class>
 		<properties>
 			<property name="hibernate.connection.url"
 				value="jdbc:hsqldb:hsql://localhost/DB" />

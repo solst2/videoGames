@@ -1,5 +1,6 @@
 package ch.hevs.businessobject;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -35,6 +36,7 @@ public class Client extends Person{
 		super(firstname, lastname);
 		this.description = description;
 		this.age = age;
+		this.games = new HashSet<Game>();
 	}
 	public Client() {
 		super();
