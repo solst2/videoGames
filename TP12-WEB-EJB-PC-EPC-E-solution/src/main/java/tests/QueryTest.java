@@ -28,7 +28,7 @@ class QueryTest {
 	void test() {
 		EntityTransaction tx = null;
 		try {
-			EntityManagerFactory emf = Persistence.createEntityManagerFactory("test");
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("videoGames");
 			EntityManager em = emf.createEntityManager();
 			tx = em.getTransaction();
 			tx.begin();
