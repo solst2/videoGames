@@ -68,21 +68,6 @@ public class VideoGamesBean implements VideoGames{
 	}
 
 	@Override
-	public void insert(Object o) {
-		em.persist(o);
-	}
-
-	@Override
-	public void update(Object o) {
-		em.merge(o);
-	}
-
-	@Override
-	public void delete(Object o) {
-		em.detach(o);
-	}
-
-	@Override
 	public void rent(Client c, Game g) {
 		c.addGame(g);
 		em.persist(c);
@@ -92,5 +77,78 @@ public class VideoGamesBean implements VideoGames{
 	public void giveBack(Client c, Game g) {
 		c.removeGame(g);
 		em.persist(c);
+	}
+
+	@Override
+	public void insertClient(Client c) {
+		em.persist(c);
+	}
+
+	@Override
+	public void updateClient(Client c) {
+		em.merge(c);
+	}
+
+	@Override
+	public void deleteClient(Client c) {
+		for(Game g : c.getGames()) {
+			g.setClient(null);
+			em.persist(g);
+		}
+		em.remove(c);
+	}
+
+	@Override
+	public void insertDeveloper(Developer d) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateDeveloper(Developer d) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteDeveloper(Object d) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void insertCategory(Category c) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(Category c) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(Category c) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void insertGame(Game g, Category c, Developer d) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateGame(Game g, Category c, Developer d) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteGame(Game g, Category c, Developer d) {
+		// TODO Auto-generated method stub
+		
 	}
 }

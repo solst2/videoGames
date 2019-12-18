@@ -12,27 +12,44 @@ public interface VideoGames {
 	
 	List<Client> getAllClients();
 	
+	void insertClient(Client c);
+	
+	void updateClient(Client c);
+	
+	void deleteClient(Client c);
+	
 	//Methods for the Developers
 	Developer getDeveloper(long idDeveloper);
 	
 	List<Developer> getAllDevelopers();
+	
+	void insertDeveloper(Developer d);
+	
+	void updateDeveloper(Developer d);
+	
+	void deleteDeveloper(Object d);
 	
 	//Methods for the Categories
 	Category getCategory(long idCategory);
 	
 	List<Category> getAllCategories();
 	
+	void insertCategory(Category c);
+	
+	void update(Category c);
+	
+	void delete(Category c);
+	
 	//Mehtods for the Games
 	Game getGame(long idGame);
 	
 	List<Game> getAllGames();
 	
-	//Methods for the Update, Insert and Delete
-	void insert(Object o);
+	void insertGame(Game g, Category c, Developer d);
 	
-	void update(Object o);
+	void updateGame(Game g, Category c, Developer d);
 	
-	void delete(Object o);
+	void deleteGame(Game g, Category c, Developer d);
 	
 	//Methods fot the Rental
 	void rent(Client c, Game g);

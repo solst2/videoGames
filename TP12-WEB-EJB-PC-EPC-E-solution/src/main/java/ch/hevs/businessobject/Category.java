@@ -19,7 +19,7 @@ public class Category {
 	private long id;
 	private String name;
 	private String description;
-	@OneToMany(mappedBy="category", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="category", cascade = CascadeType.REMOVE)
 	private Set<Game> games;
 	
 	public Set<Game> getGames() {

@@ -12,7 +12,7 @@ public class Client extends Person{
 	
 	private String description;
 	private int age;
-	@OneToMany(mappedBy="client", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="client")
 	private Set<Game> games;
 	public Set<Game> getGames() {
 		return games;

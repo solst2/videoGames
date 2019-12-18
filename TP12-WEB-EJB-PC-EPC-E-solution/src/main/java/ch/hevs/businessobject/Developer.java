@@ -5,13 +5,12 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Developer extends Person{
-	
 	private String mail;
-	@ManyToMany(cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="developer", cascade = CascadeType.REMOVE)
 	private Set<Game> games;
 	
 	public Set<Game> getGames() {
@@ -40,5 +39,6 @@ public class Developer extends Person{
 	//helper Methode
 	public void addGame(Game g) {
 		games.add(g);
+		g.setDeveloper(this);
 	}
 }
