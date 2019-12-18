@@ -46,8 +46,8 @@ class QueryTest {
 			Game g2 = new Game("Super Marion", "easy", 6);
 			
 			
-			g1.addDeveloper(d1);
-			g2.addDeveloper(d2);
+			//g1.addDeveloper(d1);
+			//g2.addDeveloper(d2);
 			
 			cat1.addGame(g1);
 			cat2.addGame(g2);
