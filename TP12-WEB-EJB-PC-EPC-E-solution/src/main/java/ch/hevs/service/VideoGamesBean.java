@@ -100,14 +100,12 @@ public class VideoGamesBean implements VideoGames{
 
 	@Override
 	public void insertDeveloper(Developer d) {
-		// TODO Auto-generated method stub
-		
+		em.persist(d);
 	}
 
 	@Override
 	public void updateDeveloper(Developer d) {
-		// TODO Auto-generated method stub
-		
+		em.merge(d);
 	}
 
 	@Override
