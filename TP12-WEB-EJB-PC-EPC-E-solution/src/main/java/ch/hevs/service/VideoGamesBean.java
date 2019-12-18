@@ -12,6 +12,8 @@ import ch.hevs.businessobject.*;
 public class VideoGamesBean implements VideoGames{
 	@PersistenceContext(name = "videoGames")
 	private EntityManager em;
+	
+	//Methods fot the Clients
 	@Override
 	public Client getClient(long idClient) {
 		Query query = em.createQuery("FROM Client c Where c.id:=id");
@@ -31,6 +33,7 @@ public class VideoGamesBean implements VideoGames{
 		return em.createQuery("FROM Client").getResultList();
 	}
 
+	//Methods fot the Developers
 	@Override
 	public Developer getDeveloper(long idDeveloper) {
 		Query query = em.createQuery("FROM Developer d Where d.id:=id");
@@ -43,6 +46,7 @@ public class VideoGamesBean implements VideoGames{
 		return em.createQuery("FROM Developer").getResultList();
 	}
 
+	//Methods fot the Categories
 	@Override
 	public Category getCategory(long idCategory) {
 		Query query = em.createQuery("FROM Category c Where c.id:=id");
@@ -55,6 +59,7 @@ public class VideoGamesBean implements VideoGames{
 		return em.createQuery("FROM Category").getResultList();
 	}
 
+	//Methods fot the Games
 	@Override
 	public Game getGame(long idGame) {
 		Query query = em.createQuery("FROM Game g Where g.id:=id");
@@ -67,6 +72,7 @@ public class VideoGamesBean implements VideoGames{
 		return em.createQuery("FROM Game").getResultList();
 	}
 
+	//Methods to Rent a Game or give back the Game
 	@Override
 	public void rent(Client c, Game g) {
 		c.addGame(g);
@@ -79,6 +85,7 @@ public class VideoGamesBean implements VideoGames{
 		em.persist(c);
 	}
 
+	//Insert, Update, Delte Methods
 	@Override
 	public void insertClient(Client c) {
 		em.persist(c);
@@ -110,43 +117,50 @@ public class VideoGamesBean implements VideoGames{
 
 	@Override
 	public void deleteDeveloper(Object d) {
-		// TODO Auto-generated method stub
-		
+		em.remove(d);
 	}
 
 	@Override
 	public void insertCategory(Category c) {
-		// TODO Auto-generated method stub
-		
+		em.persist(c);
 	}
 
 	@Override
 	public void update(Category c) {
-		// TODO Auto-generated method stub
-		
+		em.merge(c);
 	}
 
 	@Override
 	public void delete(Category c) {
-		// TODO Auto-generated method stub
-		
+		em.remove(c);
 	}
 
 	@Override
 	public void insertGame(Game g, Category c, Developer d) {
-		// TODO Auto-generated method stub
-		
+		em.persist(g);
+		c.addGame(g);
+		em.persist(c);
+		d.addGame(g);
+		em.persist(d);
 	}
 
 	@Override
 	public void updateGame(Game g, Category c, Developer d) {
-		// TODO Auto-generated method stub
-		
+		c.addGame(g);
+		d.addGame(g);
+		em.merge(g);
+		em.merge(c);
+		em.merge(d);
 	}
 
 	@Override
-	public void deleteGame(Game g, Category c, Developer d) {
-		// TODO Auto-generated method stub
-		
+	public void deleteGame(Game g) {
+		em.remove(g);
+		Category cat = g.getCategory();
+		Developer dev = g.getDeveloper();
+		cat.removeGame(g);
+		dev.removeGame(g);
+		em.merge(cat);
+		em.merge(dev);
 	}
 }

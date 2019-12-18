@@ -41,4 +41,8 @@ public class Developer extends Person{
 		games.add(g);
 		g.setDeveloper(this);
 	}
+	
+	public void removeGame(Game g) {
+		games.remove(g);
+	}
 }

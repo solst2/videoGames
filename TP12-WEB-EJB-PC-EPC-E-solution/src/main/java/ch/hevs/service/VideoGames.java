@@ -49,7 +49,7 @@ public interface VideoGames {
 	
 	void updateGame(Game g, Category c, Developer d);
 	
-	void deleteGame(Game g, Category c, Developer d);
+	void deleteGame(Game g);
 	
 	//Methods fot the Rental
 	void rent(Client c, Game g);

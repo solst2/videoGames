@@ -59,4 +59,8 @@ public class Category {
 		games.add(g);
 		g.setCategory(this);
 	}
+	
+	public void removeGame(Game g) {
+		games.remove(g);
+	}
 }
