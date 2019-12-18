@@ -47,4 +47,9 @@ public class Client extends Person{
 		g.setClient(this);
 	}
 	
+	public void removeGame(Game g) {
+		games.remove(g);
+		g.setClient(null);
+	}
+	
 }
