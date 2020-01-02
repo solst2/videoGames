@@ -42,6 +42,11 @@ public class Developer extends Person{
 		g.setDeveloper(this);
 	}
 	
+	@Override
+	public String toString() {
+		return "Developer [mail=" + mail + ", games=" + games + "]";
+	}
+
 	public void removeGame(Game g) {
 		games.remove(g);
 	}

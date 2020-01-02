@@ -41,6 +41,10 @@ public class Person {
 	public void setFristname(String fristname) {
 		this.fristname = fristname;
 	}
+	@Override
+	public String toString() {
+		return "Person [id=" + id + ", lastname=" + lastname + ", fristname=" + fristname + "]";
+	}
 	
 
 }

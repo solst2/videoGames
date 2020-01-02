@@ -63,4 +63,8 @@ public class Category {
 	public void removeGame(Game g) {
 		games.remove(g);
 	}
+	@Override
+	public String toString() {
+		return "Category [id=" + id + ", name=" + name + ", description=" + description + ", games=" + games + "]";
+	}
 }

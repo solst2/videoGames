@@ -9,7 +9,6 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Client extends Person{
-	
 	private String description;
 	private int age;
 	@OneToMany(mappedBy="client")
@@ -50,6 +49,10 @@ public class Client extends Person{
 	public void removeGame(Game g) {
 		games.remove(g);
 		g.setClient(null);
+	}
+	@Override
+	public String toString() {
+		return super.toString() + "Client [description=" + description + ", age=" + age + ", games=" + games + "]";
 	}
 	
 }

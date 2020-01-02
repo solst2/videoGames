@@ -17,6 +17,11 @@ public class Game {
 	@ManyToOne
 	@JoinColumn(nullable = false)
 	private Developer developer;
+	@Override
+	public String toString() {
+		return "Game [id=" + id + ", name=" + name + ", difficultyLevel=" + difficultyLevel + ", ageLimit=" + ageLimit
+				+ ", developer=" + developer + ", category=" + category + ", client=" + client + "]";
+	}
 	@ManyToOne
 	private Category category;
 	@ManyToOne

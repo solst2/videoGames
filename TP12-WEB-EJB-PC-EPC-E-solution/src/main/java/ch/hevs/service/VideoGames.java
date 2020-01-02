@@ -21,6 +21,8 @@ public interface VideoGames {
 	//Methods for the Developers
 	Developer getDeveloper(long idDeveloper);
 	
+	Developer getDeveloperFromAGame(long idGame);
+	
 	List<Developer> getAllDevelopers();
 	
 	void insertDeveloper(Developer d);
@@ -31,6 +33,8 @@ public interface VideoGames {
 	
 	//Methods for the Categories
 	Category getCategory(long idCategory);
+	
+	Category getCategoryFromAGame(long idGame);
 	
 	List<Category> getAllCategories();
 	

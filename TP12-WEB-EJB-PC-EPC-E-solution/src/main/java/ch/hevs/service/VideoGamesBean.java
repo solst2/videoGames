@@ -23,7 +23,8 @@ public class VideoGamesBean implements VideoGames{
 	
 	@Override
 	public List<Game> getGamesFromClient(long idClient){
-		Query query = em.createQuery("SELECT c.games FROM Client c Where c.id:=id");
+		//2 Lösung evt. Query query = em.createQuery("FROM Game g, IN(g.client) c  Where c.id:=id");
+		Query query = em.createQuery("SELECT g FROM Client c, IN(c.games) g Where c.id:=id");
 		query.setParameter("id", idClient);
 		return (List<Game>) query.getResultList();
 	}
@@ -40,6 +41,13 @@ public class VideoGamesBean implements VideoGames{
 		query.setParameter("id", idDeveloper);
 		return (Developer) query.getSingleResult();
 	}
+	
+	@Override
+	public Developer getDeveloperFromAGame(long idGame) {
+		Query query = em.createQuery("SELECT d FROM Game g, IN(g.developer) d Where g.id:=id");
+		query.setParameter("id", idGame);
+		return (Developer) query.getSingleResult();
+	}
 
 	@Override
 	public List<Developer> getAllDevelopers() {
@@ -51,6 +59,13 @@ public class VideoGamesBean implements VideoGames{
 	public Category getCategory(long idCategory) {
 		Query query = em.createQuery("FROM Category c Where c.id:=id");
 		query.setParameter("id", idCategory);
+		return (Category) query.getSingleResult();
+	}
+	
+	@Override
+	public Category getCategoryFromAGame(long idGame) {
+		Query query = em.createQuery("SELECT c FROM Game g, IN(g.category) c Where g.id:=id");
+		query.setParameter("id", idGame);
 		return (Category) query.getSingleResult();
 	}
 
