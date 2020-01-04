@@ -46,8 +46,8 @@ class QueryTest {
 			Game g2 = new Game("Super Marion", "easy", 6);
 			
 			
-			g1.addDeveloper(d1);
-			g2.addDeveloper(d2);
+			d1.addGame(g1);
+			d2.addGame(g2);
 			
 			cat1.addGame(g1);
 			cat2.addGame(g2);
@@ -57,6 +57,12 @@ class QueryTest {
 			
 			em.persist(c1);
 			em.persist(c2);
+			
+			em.persist(d1);
+			em.persist(d2);
+			
+			em.persist(g1);
+			em.persist(g2);
 			
 			em.persist(cat1);
 			em.persist(cat2);
