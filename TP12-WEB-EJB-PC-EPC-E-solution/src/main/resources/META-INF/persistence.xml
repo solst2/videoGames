@@ -5,8 +5,8 @@
                 http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
 	version="1.0">
 
-	<persistence-unit name="videoGames ">
-		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+	<persistence-unit name="videoGames">
+	<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>ch.hevs.businessobject.Game</class>
 		<class>ch.hevs.businessobject.Category</class>
 		<class>ch.hevs.businessobject.Client</class>
@@ -21,6 +21,7 @@
 			<property name="hibernate.connection.password" value="" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/>
 		</properties>
 	</persistence-unit>
 </persistence>

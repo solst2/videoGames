@@ -1,3 +1,4 @@
+package ch.hevs.test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import javax.persistence.EntityManager;
@@ -5,11 +6,11 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-import org.junit.jupiter.api.Test;
+//import org.junit.jupiter.api.Test;
 
 import ch.hevs.businessobject.*;
 
-class InitDatabase {
+class DbTest {/*
 
 	@Test
 	void test() {
@@ -59,6 +60,6 @@ class InitDatabase {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 
 }

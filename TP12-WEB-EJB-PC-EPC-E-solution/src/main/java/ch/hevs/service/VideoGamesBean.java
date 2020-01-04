@@ -4,13 +4,15 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 import javax.ejb.Stateless;
 import ch.hevs.businessobject.*;
 
 @Stateless
 public class VideoGamesBean implements VideoGames{
-	@PersistenceContext(name = "videoGames")
+	
+	@PersistenceContext(name = "videoGames",type=PersistenceContextType.EXTENDED)
 	private EntityManager em;
 	
 	//Methods fot the Clients

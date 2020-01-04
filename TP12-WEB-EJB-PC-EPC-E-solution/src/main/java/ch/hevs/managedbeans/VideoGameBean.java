@@ -53,6 +53,7 @@ public class VideoGameBean {
 		
 		// get clients with format id firstname lastname
 		List<Client> clients = videoGameRental.getAllClients();
+		System.out.println("-----------the client size"+clients.size());
 		this.clientNames = new ArrayList<String>();
 		/*for (Client c : clients) {
 			this.clientNames.add(c.getId() + " " + c.getFristname() + " " + c.getLastname());
