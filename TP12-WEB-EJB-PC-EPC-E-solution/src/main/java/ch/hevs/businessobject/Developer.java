@@ -6,8 +6,10 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="Developer")
 public class Developer extends Person{
 	private String mail;
 	@OneToMany(mappedBy="developer", cascade = CascadeType.REMOVE)

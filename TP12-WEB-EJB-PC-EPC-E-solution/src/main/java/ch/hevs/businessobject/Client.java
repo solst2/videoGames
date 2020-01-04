@@ -6,8 +6,10 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="Client")
 public class Client extends Person{
 	private String description;
 	private int age;

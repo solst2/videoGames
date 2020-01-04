@@ -23,7 +23,7 @@ public class VideoGamesBean implements VideoGames{
 	
 	@Override
 	public List<Game> getGamesFromClient(long idClient){
-		Query query = em.createQuery("FROM Game g, IN(g.client) c  Where c.id:=id");
+		Query query = em.createQuery("FROM Game g, IN(g.client) c  Where c.id=:id");
 		//Query query = em.createQuery("SELECT g FROM Client c, IN(c.games) g Where c.id:=id");
 		query.setParameter("id", idClient);
 		return (List<Game>) query.getResultList();
@@ -31,20 +31,21 @@ public class VideoGamesBean implements VideoGames{
 
 	@Override
 	public List<Client> getAllClients() {
-		return em.createQuery("FROM Client").getResultList();
+		//return em.createQuery("FROM Person").getResultList();
+		return em.createQuery("From Client").getResultList();
 	}
 
 	//Methods fot the Developers
 	@Override
 	public Developer getDeveloper(long idDeveloper) {
-		Query query = em.createQuery("FROM Developer d Where d.id:=id");
+		Query query = em.createQuery("FROM Developer d Where d.id=:id");
 		query.setParameter("id", idDeveloper);
 		return (Developer) query.getSingleResult();
 	}
 	
 	@Override
 	public Developer getDeveloperFromAGame(long idGame) {
-		Query query = em.createQuery("SELECT d FROM Game g, IN(g.developer) d Where g.id:=id");
+		Query query = em.createQuery("SELECT d FROM Game g, IN(g.developer) d Where g.id=:id");
 		query.setParameter("id", idGame);
 		return (Developer) query.getSingleResult();
 	}
@@ -57,14 +58,14 @@ public class VideoGamesBean implements VideoGames{
 	//Methods fot the Categories
 	@Override
 	public Category getCategory(long idCategory) {
-		Query query = em.createQuery("FROM Category c Where c.id:=id");
+		Query query = em.createQuery("FROM Category c Where c.id=:id");
 		query.setParameter("id", idCategory);
 		return (Category) query.getSingleResult();
 	}
 	
 	@Override
 	public Category getCategoryFromAGame(long idGame) {
-		Query query = em.createQuery("SELECT c FROM Game g, IN(g.category) c Where g.id:=id");
+		Query query = em.createQuery("SELECT c FROM Game g, IN(g.category) c Where g.id=:id");
 		query.setParameter("id", idGame);
 		return (Category) query.getSingleResult();
 	}
@@ -77,7 +78,7 @@ public class VideoGamesBean implements VideoGames{
 	//Methods fot the Games
 	@Override
 	public Game getGame(long idGame) {
-		Query query = em.createQuery("FROM Game g Where g.id:=id");
+		Query query = em.createQuery("FROM Game g Where g.id=:id");
 		query.setParameter("id", idGame);
 		return (Game) query.getSingleResult();
 	}

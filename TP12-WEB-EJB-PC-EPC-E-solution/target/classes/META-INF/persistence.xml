@@ -5,7 +5,7 @@
                 http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
 	version="1.0">
 
-	<persistence-unit name="videoGames">
+	<persistence-unit name="videoGames ">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>ch.hevs.businessobject.Game</class>
 		<class>ch.hevs.businessobject.Category</class>
