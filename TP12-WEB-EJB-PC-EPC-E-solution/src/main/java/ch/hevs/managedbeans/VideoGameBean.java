@@ -70,6 +70,9 @@ public class VideoGameBean {
 			allGames.put(g.getName(),g.getId());
 		}
 		
+		//test
+		videoGameRental.insertClient(new Client("Firstname","Lastname","Description",50));
+		
 
 	}
 
@@ -190,13 +193,13 @@ public class VideoGameBean {
 
 	public List<Game> getOwnGames() {
 		updateOwnGames();
-		//ownGames = videoGameRental.getGamesFromClient(11);
 		return ownGames;
 	}
 	
 	public void updateOwnGames(){
 		String[] split = clientName.split(" ");
-		ownGames = videoGameRental.getGamesFromClient(Long.parseLong(split[0]));
+		//ownGames = videoGameRental.getGamesFromClient(Long.parseLong(split[0]));
+		ownGames = videoGameRental.getGamesFromClient(11);
 	}
 
 	public void setOwnGames(List<Game> ownGames) {
