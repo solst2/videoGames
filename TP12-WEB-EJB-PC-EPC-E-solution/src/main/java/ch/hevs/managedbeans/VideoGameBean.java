@@ -70,8 +70,6 @@ public class VideoGameBean {
 			allGames.put(g.getName(),g.getId());
 		}
 		
-		//test
-		videoGameRental.insertClient(new Client("Firstname","Lastname","Description",50));
 		
 
 	}
