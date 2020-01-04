@@ -25,6 +25,10 @@
 			</div>
 			<br></br>
 			<br></br>
+			<h:form>
+				<h3>Game ID to do something with it:</h3>
+				<h:inputText value="ID game" valueChangeListener="#{videoGameBean.updateIdGameEdit}" onchange="submit()"/>
+			</h:form>
 			<h:commandButton value="create ->" action="createGame"></h:commandButton>
 			<br></br>
 		</h:form>
