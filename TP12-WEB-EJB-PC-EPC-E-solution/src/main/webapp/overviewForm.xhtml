@@ -2,23 +2,46 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
 
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
-    <ui:define name="content">
-    	<h:form>
-        	<h:outputLabel value="Hello #{videoGameBean.clientName}"></h:outputLabel>
-        	<br></br>
-        	<h:outputLabel value="Overview of your video games: "></h:outputLabel>
-        	<br></br>
-        	<h:panelGrid columns="5">
-        	
-        	</h:panelGrid>
-     		<h:commandButton value="rent a game" action="#{videoGameBean.rentGame}"></h:commandButton>
-     		<h:commandButton value="giva a game back" action="#{videoGameBean.giveBackGame}"></h:commandButton>
-        </h:form>
-    </ui:define>
+	<ui:define name="content">
+		<h:form>
+			<h:outputLabel value="Hello #{videoGameBean.clientName}"></h:outputLabel>
+			<br></br>
+			<h:outputLabel value="Overview of your video games: "></h:outputLabel>
+			<br></br>
+			<h:dataTable value="#{videoGameBean.ownGames}" var="games">
+
+				<h:column>
+					<f:facet name="header">Id</f:facet>
+                    #{games.id}
+                </h:column>
+
+				<h:column>
+					<f:facet name="header">name</f:facet>
+                    #{games.name}
+                </h:column>
+
+				<h:column>
+					<f:facet name="header">category</f:facet>
+                    #{games.category.name}
+                </h:column>
+
+				<h:column>
+					<f:facet name="header">developer</f:facet>
+                    #{games.developer.name}
+                </h:column>
+
+			</h:dataTable>
+			<br></br>
+			<br></br>
+			<h:commandButton value="rent a game" action="rentGame"></h:commandButton>
+			<br></br>
+			<h:commandButton value="giva a game back" action="giveBackGame"></h:commandButton>
+		</h:form>
+	</ui:define>
 </ui:composition>
 </html>

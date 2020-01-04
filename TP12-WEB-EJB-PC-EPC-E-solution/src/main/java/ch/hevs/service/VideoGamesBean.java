@@ -23,14 +23,15 @@ public class VideoGamesBean implements VideoGames{
 	
 	@Override
 	public List<Game> getGamesFromClient(long idClient){
-		Query query = em.createQuery("SELECT c.games FROM Client c Where c.id:=id");
-		query.setParameter("id", idClient);
+		//Query query = em.createQuery("SELECT c.games FROM Client c Where c.id=:id");
+		//query.setParameter("id", idClient);
+		Query query = em.createQuery("FROM Game");
 		return (List<Game>) query.getResultList();
 	}
 
 	@Override
 	public List<Client> getAllClients() {
-		return em.createQuery("FROM Client").getResultList();
+		return em.createQuery("FROM Person").getResultList();
 	}
 
 	//Methods fot the Developers

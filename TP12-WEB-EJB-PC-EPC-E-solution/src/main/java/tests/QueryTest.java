@@ -1,31 +1,21 @@
 package tests;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-import org.junit.jupiter.api.Test;
+//import org.junit.jupiter.api.Test;
 
 import ch.hevs.businessobject.Category;
 import ch.hevs.businessobject.Client;
 import ch.hevs.businessobject.Developer;
 import ch.hevs.businessobject.Game;
-import ch.hevs.businessobject.Person;
 
 class QueryTest {
 
-	@Test
-	void test() {
+	//@Test
+	void test() {/*
 		EntityTransaction tx = null;
 		try {
 			EntityManagerFactory emf = Persistence.createEntityManagerFactory("videoGames");
@@ -46,8 +36,8 @@ class QueryTest {
 			Game g2 = new Game("Super Marion", "easy", 6);
 			
 			
-			//g1.addDeveloper(d1);
-			//g2.addDeveloper(d2);
+			g1.setDeveloper(d1);
+			g2.setDeveloper(d2);
 			
 			cat1.addGame(g1);
 			cat2.addGame(g2);
@@ -65,7 +55,7 @@ class QueryTest {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 
 }
