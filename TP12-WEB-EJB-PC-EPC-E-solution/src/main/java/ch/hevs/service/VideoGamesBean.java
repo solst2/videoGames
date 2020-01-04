@@ -12,7 +12,7 @@ import ch.hevs.businessobject.*;
 @Stateless
 public class VideoGamesBean implements VideoGames{
 	
-	@PersistenceContext(name = "videoGames",type=PersistenceContextType.EXTENDED)
+	@PersistenceContext(name = "videoGames")
 	private EntityManager em;
 	
 	//Methods fot the Clients

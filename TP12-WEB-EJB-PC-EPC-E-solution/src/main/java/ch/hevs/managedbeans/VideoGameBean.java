@@ -55,12 +55,13 @@ public class VideoGameBean {
 		List<Client> clients = videoGameRental.getAllClients();
 		System.out.println("-----------the client size"+clients.size());
 		this.clientNames = new ArrayList<String>();
-		/*for (Client c : clients) {
+		for (Client c : clients) {
 			this.clientNames.add(c.getId() + " " + c.getFristname() + " " + c.getLastname());
-		}*/
+		}
+		/*
 		Game test = videoGameRental.getGame(20);
 		this.clientNames.add(test.getId() + " " + test.getName() + " " + test.getDifficultyLevel());
-		this.clientNames.add("Hallo dies ist ein Test");
+		this.clientNames.add("Hallo dies ist ein Test");*/
 		//greate ownGames and get all games
 		this.ownGames = new ArrayList<Game>();
 		allGames = new HashMap<String, Long>();
