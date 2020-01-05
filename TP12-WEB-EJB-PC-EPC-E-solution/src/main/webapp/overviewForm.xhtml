@@ -13,29 +13,32 @@
 			<br></br>
 			<h:outputLabel value="Overview of your video games: "></h:outputLabel>
 			<br></br>
-			<h:dataTable value="#{videoGameBean.ownGames}" var="games">
-
-				<h:column>
-					<f:facet name="header">Id</f:facet>
-                    #{games.id}
-                </h:column>
-
-				<h:column>
-					<f:facet name="header">name</f:facet>
-                    #{games.name}
-                </h:column>
-
-				<h:column>
-					<f:facet name="header">category</f:facet>
-                    #{games.category.name}
-                </h:column>
-
-				<h:column>
-					<f:facet name="header">developer</f:facet>
-                    #{games.developer.name}
-                </h:column>
-
-			</h:dataTable>
+			<h:form>
+				<h:dataTable value="#{videoGameBean.ownGames}" var="games">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="ID"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{games.id}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Name"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{games.name}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="action"></h:outputText>
+						</f:facet>
+						<h:commandButton value="details"
+							action="#{videoGameBean.updateDetailsGameRent}">
+							<f:setPropertyActionListener
+								target="#{videoGameBean.gameSelected}" value="#{games}" />
+						</h:commandButton>
+					</h:column>
+				</h:dataTable>
+			</h:form>
 			<br></br>
 			<br></br>
 			<h:commandButton value="rent a game" action="rentGame"></h:commandButton>

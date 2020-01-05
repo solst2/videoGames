@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.HashMap;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.ViewHandler;
+import javax.faces.component.UIViewRoot;
 import javax.faces.event.ValueChangeEvent;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -69,10 +71,7 @@ public class VideoGameBean {
 		for(Game g : allGameObjects) {
 			allGames.put(g.getName(),g.getId());
 		}
-		
-		//test
-		videoGameRental.insertClient(new Client("Firstname","Lastname","Description",50));
-		
+			
 
 	}
 
@@ -176,6 +175,8 @@ public class VideoGameBean {
 		for(Game g:gamesToRentObject) {
 			gamesToRent.add(g.getName());
 		}
+		this.gameToRent=gamesToRent.get(0);
+		updateDetailsGameRent();
 		return gamesToRent;
 	}
 
@@ -198,8 +199,8 @@ public class VideoGameBean {
 	
 	public void updateOwnGames(){
 		String[] split = clientName.split(" ");
-		//ownGames = videoGameRental.getGamesFromClient(Long.parseLong(split[0]));
-		ownGames = videoGameRental.getGamesFromClient(11);
+		Long id = Long.parseLong(split[0]);
+		ownGames = videoGameRental.getGamesFromClient(id);
 	}
 
 	public void setOwnGames(List<Game> ownGames) {
@@ -223,7 +224,7 @@ public class VideoGameBean {
 	}
 	
 	public void updateDetailsGameRent() {
-		Long gameId = allGames.get(gameToRent);
+		long gameId = allGames.get(gameToRent);
 		gameToRentObject=videoGameRental.getGame(gameId);
 		
 		rentGameName=gameToRentObject.getName();
@@ -235,6 +236,7 @@ public class VideoGameBean {
 		Category cat = gameToRentObject.getCategory();
 		rentGameCategoryName = cat.getName();
 		rentGameCategoryDescription = cat.getDescription();
+		
 	}
 	
 	public void rentTheGame() {

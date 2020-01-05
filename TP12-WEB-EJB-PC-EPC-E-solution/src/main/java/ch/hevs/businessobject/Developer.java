@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -12,7 +13,7 @@ import javax.persistence.Table;
 @Table(name="Developer")
 public class Developer extends Person{
 	private String mail;
-	@OneToMany(mappedBy="developer", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy="developer", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
 	private Set<Game> games;
 	
 	public Set<Game> getGames() {

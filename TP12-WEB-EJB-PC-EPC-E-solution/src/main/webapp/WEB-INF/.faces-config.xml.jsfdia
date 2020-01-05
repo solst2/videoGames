@@ -5,4 +5,19 @@
   <PROCESS-ITEM ID="rules:#welcomeVideoGames.xhtml:0" NAME="item"
    PATH="/welcomeVideoGames.xhtml" model-entity="JSFProcessItem"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#overviewFrom.xhtml"
+  PATH="/overviewFrom.xhtml" SHAPE="240,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#overviewFrom.xhtml:0" NAME="item"
+   PATH="/overviewFrom.xhtml" model-entity="JSFProcessItem"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#rentGame.xhtml" PATH="/rentGame.xhtml"
+  SHAPE="448,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#rentGame.xhtml:0" NAME="item"
+   PATH="/rentGame.xhtml" model-entity="JSFProcessItem"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#giveBackGame.xhtml"
+  PATH="/giveBackGame.xhtml" SHAPE="656,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#giveBackGame.xhtml:0" NAME="item"
+   PATH="/giveBackGame.xhtml" model-entity="JSFProcessItem"/>
+ </PROCESS-ITEM>
 </PROCESS>

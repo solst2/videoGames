@@ -13,5 +13,17 @@
 		<display-name>welcomeVideoGames.xhtml</display-name>
 		<from-view-id>/welcomeVideoGames.xhtml</from-view-id>
 	</navigation-rule>
+	<navigation-rule>
+		<display-name>overviewFrom.xhtml</display-name>
+		<from-view-id>/overviewFrom.xhtml</from-view-id>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>rentGame.xhtml</display-name>
+		<from-view-id>/rentGame.xhtml</from-view-id>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>giveBackGame.xhtml</display-name>
+		<from-view-id>/giveBackGame.xhtml</from-view-id>
+	</navigation-rule>
 
 </faces-config>
