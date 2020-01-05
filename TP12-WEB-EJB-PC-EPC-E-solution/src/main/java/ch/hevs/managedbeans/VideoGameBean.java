@@ -71,7 +71,6 @@ public class VideoGameBean {
 		for(Game g : allGameObjects) {
 			allGames.put(g.getName(),g.getId());
 		}
-			
 
 	}
 
