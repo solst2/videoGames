@@ -60,11 +60,7 @@ public class VideoGameBean {
 		for (Client c : clients) {
 			this.clientNames.add(c.getId() + " " + c.getFristname() + " " + c.getLastname());
 		}
-		/*
-		Game test = videoGameRental.getGame(20);
-		this.clientNames.add(test.getId() + " " + test.getName() + " " + test.getDifficultyLevel());
-		this.clientNames.add("Hallo dies ist ein Test");*/
-		//greate ownGames and get all games
+
 		this.ownGames = new ArrayList<Game>();
 		allGames = new HashMap<String, Long>();
 		allGameObjects = videoGameRental.getAllGames();

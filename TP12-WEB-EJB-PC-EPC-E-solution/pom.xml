@@ -3,9 +3,14 @@
   <groupId>TP12-WEB-EJB-PC-EPC-E</groupId>
   <artifactId>TP12-WEB-EJB-PC-EPC-E</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-    
+  
 <packaging>war</packaging>
   <dependencies>
+  <dependency>
+    <groupId>xml-apis</groupId>
+    <artifactId>xml-apis</artifactId>
+    <version>1.4.01</version>
+</dependency>
   	<dependency>
 		<groupId>javax.faces</groupId>
 		<artifactId>javax.faces-api</artifactId>
@@ -17,7 +22,7 @@
 	  <version>2.5.0</version>
 	</dependency>
     <dependency>
-      <groupId>org.hsqldb</groupId>
+      <groupId>hsqldb</groupId>
       <artifactId>hsqldb</artifactId>
       <version>1.8.0.10</version>
     </dependency>
