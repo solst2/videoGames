@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+	<ui:define name="content">
+		<h:outputLabel value="#{videoGameBean.gameSelected.name}"></h:outputLabel>
+		<br></br>
+		<h:form>
+			<br></br>
+			<br></br>
+			<h:outputLabel value="Game informations"></h:outputLabel>
+			<br></br>
+			<br></br>
+			<h:outputLabel value="Game name"></h:outputLabel>
+			<br></br>
+			<h:inputText value="#{videoGameBean.gameSelected.name}" />
+			<br></br>
+			<h:outputLabel value="Game difficulty level"></h:outputLabel>
+			<br></br>
+			<h:inputText value="#{videoGameBean.gameSelected.difficultyLevel}" />
+			<br></br>
+			<h:outputLabel value="Game age limit"></h:outputLabel>
+			<br></br>
+			<h:inputText value="#{videoGameBean.gameSelected.ageLimit}" />
+			<br></br>
+			<br></br>
+			<h:outputLabel value="Game category"></h:outputLabel>
+			<br></br>
+			<h:selectOneMenu value="#{videoGameBean.newGameCategoryString}">
+				<f:selectItems value="#{videoGameBean.allCategoryObjects}" />
+			</h:selectOneMenu>
+			<br></br>
+			<h:outputLabel value="Game developer"></h:outputLabel>
+			<br></br>
+			<h:selectOneMenu value="#{videoGameBean.newGameDeveloperString}">
+				<f:selectItems value="#{videoGameBean.allDeveloperObjects}" />
+			</h:selectOneMenu>
+			<br></br>
+			<h:commandButton value="safe the modifications ->"
+				action="#{videoGameBean.modifyGame}">
+			</h:commandButton>
+			<br></br>
+			<h:commandButton value="delete the game ->"
+				action="#{videoGameBean.deleteGame}">
+			</h:commandButton>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

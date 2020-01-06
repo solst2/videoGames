@@ -22,6 +22,8 @@ public class VideoGameBean {
 	private VideoGames videoGameRental;
 	private HashMap<String, Long> allGames;
 	private List<Game> allGameObjects;
+	private List<Category> allCategoryObjects;
+	private List<Developer> allDeveloperObjects;
 	//welcome Page
 	private String clientName;
 	private List<String> clientNames;
@@ -30,7 +32,7 @@ public class VideoGameBean {
 	//rent game
 	private String gameToRent;
 	private Game gameToRentObject;
-	private List<String> gamesToRent;
+	private List<Game> gamesToRent;
 	private String rentGameName;
 	private String rentGamedifficultyLevel;
 	private int rentGameAgeLimit;
@@ -42,11 +44,17 @@ public class VideoGameBean {
 	//give back game
 	private List<String> ownGamesString;
 	private String gameback;
+	private Game gamebackObject;
+	
 	
 	//Games
 	private Game gameSelected;
+	private Game newGame;
+	private Category newGameCategory;
+	private String newGameCategoryString;
+	private Developer newGameDeveloper;
+	private String newGameDeveloperString;
 	
-
 	@PostConstruct
 	public void initialize() throws NamingException {
 		InitialContext ctx = new InitialContext();
@@ -67,7 +75,129 @@ public class VideoGameBean {
 		for(Game g : allGameObjects) {
 			allGames.put(g.getName(),g.getId());
 		}
+		/*
+		// test to add a game
+		Game g  = new Game ("Solange","easy",2);
+		Category c = videoGameRental.getCategory(31);
+		Developer d = videoGameRental.getDeveloper(13);
+		videoGameRental.insertGame(g, c, d);
+		*/
 
+	}
+
+
+	public String getNewGameCategoryString() {
+		return newGameCategoryString;
+	}
+
+
+	public void setNewGameCategoryString(String newGameCategoryString) {
+		String idString = newGameCategoryString.substring(newGameCategoryString.indexOf("=") + 1);
+		idString=idString.substring(0, idString.indexOf(","));
+		System.out.println("----------id Cate "+idString);
+		newGameCategory = videoGameRental.getCategory(Long.parseLong(idString));  
+		this.newGameCategoryString = newGameCategoryString;
+	}
+
+
+	public String getNewGameDeveloperString() {
+		return newGameDeveloperString;
+	}
+
+
+	public void setNewGameDeveloperString(String newGameDeveloperString) {
+		String idString = newGameDeveloperString.substring(newGameDeveloperString.indexOf("=") + 1);
+		idString=idString.substring(0, idString.indexOf(","));
+		System.out.println("----------id dev "+idString);
+		newGameDeveloper = videoGameRental.getDeveloper(Long.parseLong(idString));
+		this.newGameDeveloperString = newGameDeveloperString;
+	}
+
+
+	public Category getNewGameCategory() {
+		return newGameCategory;
+	}
+
+
+	public void setNewGameCategory(Category newGameCategory) {
+		this.newGameCategory = newGameCategory;
+	}
+
+
+	public Developer getNewGameDeveloper() {
+		return newGameDeveloper;
+	}
+
+
+	public void setNewGameDeveloper(Developer newGameDeveloper) {
+		this.newGameDeveloper = newGameDeveloper;
+	}
+
+
+	public List<Category> getAllCategoryObjects() {
+		allCategoryObjects = videoGameRental.getAllCategories();
+		return allCategoryObjects;
+	}
+
+
+	public void setAllCategoryObjects(List<Category> allCategoryObjects) {
+		this.allCategoryObjects = allCategoryObjects;
+	}
+
+
+	public List<Developer> getAllDeveloperObjects() {
+		allDeveloperObjects = videoGameRental.getAllDevelopers();
+		return allDeveloperObjects;
+	}
+
+
+	public void setAllDeveloperObjects(List<Developer> allDeveloperObjects) {
+		this.allDeveloperObjects = allDeveloperObjects;
+	}
+
+
+	public Game getNewGame() {
+		newGame = new Game();
+		return newGame;
+	}
+
+	public void setNewGame(Game newGame) {
+		this.newGame = newGame;
+	}
+	
+	public Game getGamebackObject() {
+		return gamebackObject;
+	}
+
+	public void setGamebackObject(Game gamebackObject) {
+		this.gamebackObject = gamebackObject;
+	}
+
+	public List<Game> getAllGameObjects() {
+		allGameObjects = videoGameRental.getAllGames();
+		return allGameObjects;
+	}
+
+	public void setAllGameObjects(List<Game> allGameObjects) {
+		this.allGameObjects = allGameObjects;
+	}
+
+	public Game getGameToRentObject() {
+		return gameToRentObject;
+	}
+
+	public void setGameToRentObject(Game gameToRentObject) {
+		this.gameToRentObject = gameToRentObject;
+	}
+
+	public Game getGameSelected() {
+		setNewGameCategoryString(gameSelected.getCategory().toString());
+		setNewGameDeveloperString(gameSelected.getDeveloper().toString());
+		return gameSelected;
+	}
+
+	public void setGameSelected(Game gameSelected) {
+		this.gameSelected = gameSelected;
 	}
 
 	public String getRentGameName() {
@@ -163,19 +293,23 @@ public class VideoGameBean {
 		this.gameToRent = gameToRent;
 	}
 
-	public List<String> getGamesToRent() {
-		gamesToRent = new ArrayList<String>();
+	public List<Game> getGamesToRent() {
+		gamesToRent = new ArrayList<Game>();
 		List<Game> gamesToRentObject = new ArrayList<Game>(allGameObjects);
-		gamesToRentObject.removeAll(ownGames);
-		for(Game g:gamesToRentObject) {
-			gamesToRent.add(g.getName());
-		}
-		this.gameToRent=gamesToRent.get(0);
-		updateDetailsGameRent();
+		gamesToRentObject.removeAll(ownGames);/*
+		//if it is allready given to a client
+		for (Game g:gamesToRentObject) {
+			if (g.getClient()!=null) {
+				gamesToRentObject.remove(g);
+			}
+		}*/
+		System.out.println("games to Rent: "+gamesToRentObject.size());
+		gamesToRent= gamesToRentObject;
+		this.gameSelected=gamesToRent.get(0);
 		return gamesToRent;
 	}
 
-	public void setGamesToRent(List<String> gamesToRent) {
+	public void setGamesToRent(List<Game> gamesToRent) {
 		this.gamesToRent = gamesToRent;
 	}
 
@@ -184,6 +318,10 @@ public class VideoGameBean {
 	}
 
 	public void setGameback(String gameback) {
+		String idString = gameback.substring(gameback.indexOf("=") + 1);
+		idString=idString.substring(0, idString.indexOf(","));
+		System.out.println("----------id gameback "+idString);
+		gamebackObject = videoGameRental.getGame(Long.parseLong(idString));  
 		this.gameback = gameback;
 	}
 
@@ -217,10 +355,11 @@ public class VideoGameBean {
 	public void setClientNames(List<String> clientNames) {
 		this.clientNames = clientNames;
 	}
-	
+	/*
 	public void updateDetailsGameRent() {
 		long gameId = allGames.get(gameToRent);
 		gameToRentObject=videoGameRental.getGame(gameId);
+		gameSelected = gameToRentObject;
 		
 		rentGameName=gameToRentObject.getName();
 		rentGamedifficultyLevel=gameToRentObject.getDifficultyLevel();
@@ -232,7 +371,7 @@ public class VideoGameBean {
 		rentGameCategoryName = cat.getName();
 		rentGameCategoryDescription = cat.getDescription();
 		
-	}
+	}*/
 	
 	public void rentTheGame() {
 		String[] split = clientName.split(" ");
@@ -245,15 +384,27 @@ public class VideoGameBean {
 		String[] split = clientName.split(" ");
 		Client client = videoGameRental.getClient(Long.parseLong(split[0]));
 		
-		Long gameId = allGames.get(gameToRent);
-		Game back = videoGameRental.getGame(gameId);
-		
-		videoGameRental.giveBack(client, back);
+		/*Long gameId = allGames.get(gameToRent);
+		Game back = videoGameRental.getGame(gameId);*/
+		System.out.println(client.getFristname()+" "+gamebackObject.getName());
+		videoGameRental.giveBack(client, gamebackObject);
 		updateOwnGames();
 	}
 	
 	public void updateIdGameEdit(ValueChangeEvent event) {
 		gameSelected = videoGameRental.getGame((Long)event.getNewValue());
+	}
+	
+	public void addGame () {
+		videoGameRental.insertGame(newGame, newGameCategory, newGameDeveloper);
+	}
+	
+	public void modifyGame () {
+		videoGameRental.updateGame(gameSelected, newGameCategory, newGameDeveloper);
+	}
+	
+	public void deleteGAme () {
+		videoGameRental.deleteGame(gameSelected);
 	}
 
 }

@@ -20,7 +20,7 @@ public class Game {
 	private Developer developer;
 	@Override
 	public String toString() {
-		return "Game [id=" + id + ", name=" + name + ", difficultyLevel=" + difficultyLevel + ", ageLimit=" + "ageLimit ]";
+		return "Game [id=" + id + ", name=" + name + ", difficultyLevel=" + difficultyLevel + ", ageLimit=" + ageLimit+"]";
 	}
 	@ManyToOne
 	private Category category;
@@ -77,5 +77,17 @@ public class Game {
 	}
 	public Game() {
 		
+	}
+	@Override
+    public boolean equals(Object obj) {
+		if (obj == this) {
+            return true;
+        }
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        Game gameB = (Game) obj;
+        return id == gameB.getId();
 	}
 }

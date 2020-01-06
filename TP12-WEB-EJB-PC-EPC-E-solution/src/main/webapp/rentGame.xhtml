@@ -2,44 +2,65 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
 
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
-    <ui:define name="content">
-        <h:outputLabel value="Rent a game"></h:outputLabel>
-        <br></br>
-        <h:form>
-        <h:outputText value="select a game: "></h:outputText>
-	        	<h:selectOneMenu value="#{videoGameBean.gameToRent}" valueChangeListener="#{videoGameBean.updateDetailsGameRent}" onchange="submit()" >
-	        		<f:selectItems value="#{videoGameBean.gamesToRent}"/>
-	        	</h:selectOneMenu>
+	<ui:define name="content">
+		<h:outputLabel value="Rent a game"></h:outputLabel>
 		<br></br>
-		<br></br>
-        <h:outputLabel value="#{videoGameBean.rentGameName}"></h:outputLabel>
-		<br></br>
-        <h:outputLabel value="#{videoGameBean.rentGamedifficultyLevel}"></h:outputLabel>
-		<br></br>
-        <h:outputLabel value="#{videoGameBean.rentGameAgeLimit}"></h:outputLabel>
-		<br></br>
-        <h:outputLabel value="#{videoGameBean.rentGameDeveloperName}"></h:outputLabel>
-		<br></br>
-        <h:outputLabel value="#{videoGameBean.rentGameCategoryName}"></h:outputLabel>
-		<br></br>
-        <h:commandLink action="#{videoGameBean.rentTheGame}">
-         <h:outputText value="rent game ->" />
-        </h:commandLink>
-		<br></br>
-        
-        <h:outputLabel value="More Informations: "></h:outputLabel>
-		<br></br>
-        <h:outputLabel value="Category description: "></h:outputLabel>
-        <h:outputLabel value="#{videoGameBean.rentGameCategoryDescription}"></h:outputLabel>
-		<br></br>
-        <h:outputLabel value="Email of the developer: "></h:outputLabel>
-        <h:outputLabel value="#{videoGameBean.rentGameDeveloperMail}"></h:outputLabel>
-        </h:form>
-    </ui:define>
+		<h:form>
+			<h:form>
+				<h:dataTable value="#{videoGameBean.gamesToRent}" var="games">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="ID"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{games.id}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Name"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{games.name}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Category"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{games.category.name}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Developer"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{games.developer.name}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value=""></h:outputText>
+						</f:facet>
+						<h:commandButton value="details of the game"
+							action="detailsGame">
+							<f:setPropertyActionListener
+								target="#{videoGameBean.gameSelected}" value="#{games}" />
+						</h:commandButton>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="action"></h:outputText>
+						</f:facet>
+						<h:commandButton value="rent game ->"
+							action="#{videoGameBean.rentTheGame}">
+							<f:setPropertyActionListener
+								target="#{videoGameBean.gameSelected}" value="#{games}" />
+						</h:commandButton>
+					</h:column>
+				</h:dataTable>
+			</h:form>
+			<br></br>
+		</h:form>
+	</ui:define>
 </ui:composition>
 </html>

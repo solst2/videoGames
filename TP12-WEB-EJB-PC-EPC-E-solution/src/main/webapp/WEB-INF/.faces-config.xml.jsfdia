@@ -20,4 +20,19 @@
   <PROCESS-ITEM ID="rules:#giveBackGame.xhtml:0" NAME="item"
    PATH="/giveBackGame.xhtml" model-entity="JSFProcessItem"/>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#detailsGame.xhtml" PATH="/detailsGame.xhtml"
+  SHAPE="864,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#detailsGame.xhtml:0" NAME="item"
+   PATH="/detailsGame.xhtml" model-entity="JSFProcessItem"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#menuAdmin.xhtml" PATH="/menuAdmin.xhtml"
+  SHAPE="1072,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#menuAdmin.xhtml:0" NAME="item"
+   PATH="/menuAdmin.xhtml" model-entity="JSFProcessItem"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#manageGameOverview.xhtml"
+  PATH="/manageGameOverview.xhtml" SHAPE="32,129,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#manageGameOverview.xhtml:0" NAME="item"
+   PATH="/manageGameOverview.xhtml" model-entity="JSFProcessItem"/>
+ </PROCESS-ITEM>
 </PROCESS>

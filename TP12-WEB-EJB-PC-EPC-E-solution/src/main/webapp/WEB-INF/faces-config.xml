@@ -25,5 +25,20 @@
 		<display-name>giveBackGame.xhtml</display-name>
 		<from-view-id>/giveBackGame.xhtml</from-view-id>
 	</navigation-rule>
+	<navigation-rule>
+		<display-name>detailsGame.xhtml</display-name>
+		<from-view-id>/detailsGame.xhtml</from-view-id>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>menuAdmin.xhtml</display-name>
+		<from-view-id>/menuAdmin.xhtml</from-view-id>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>manageGameOverview.xhtml</display-name>
+		<from-view-id>/manageGameOverview.xhtml</from-view-id>
+	</navigation-rule>
+	
+	
+	
 
 </faces-config>

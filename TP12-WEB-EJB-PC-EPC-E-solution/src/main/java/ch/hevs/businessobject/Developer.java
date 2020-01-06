@@ -31,6 +31,10 @@ public class Developer extends Person{
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
+	
+	public String getName() {
+		return super.getFristname()+" "+super.getLastname();
+	}
 
 	public Developer(String firstname, String lastname, String mail) {
 		super(firstname, lastname);
@@ -47,7 +51,7 @@ public class Developer extends Person{
 	
 	@Override
 	public String toString() {
-		return "Developer [mail=" + mail + ", games=" + games + "]";
+		return "Developer [id=" + super.getId() + ",mail=" + mail + "]";
 	}
 
 	public void removeGame(Game g) {
