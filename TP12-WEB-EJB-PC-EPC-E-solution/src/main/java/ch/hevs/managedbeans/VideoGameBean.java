@@ -49,8 +49,10 @@ public class VideoGameBean {
 	
 	
 	//Games
+	private String gameName;
+	private String gameDifficultyLevel;
+	private int gameAgeLimit;
 	private Game gameSelected;
-	private Game newGame;
 	private Category newGameCategory;
 	private String newGameCategoryString;
 	private Developer newGameDeveloper;
@@ -76,13 +78,13 @@ public class VideoGameBean {
 		for(Game g : allGameObjects) {
 			allGames.put(g.getName(),g.getId());
 		}
-		/*
+		
 		// test to add a game
-		Game g  = new Game ("Solange","easy",2);
+		/*Game g  = new Game ("Solange","easy",2);
 		Category c = videoGameRental.getCategory(31);
 		Developer d = videoGameRental.getDeveloper(13);
-		videoGameRental.insertGame(g, c, d);
-		*/
+		videoGameRental.insertGame(g, c, d);*/
+		
 
 	}
 
@@ -154,16 +156,6 @@ public class VideoGameBean {
 
 	public void setAllDeveloperObjects(List<Developer> allDeveloperObjects) {
 		this.allDeveloperObjects = allDeveloperObjects;
-	}
-
-
-	public Game getNewGame() {
-		newGame = new Game();
-		return newGame;
-	}
-
-	public void setNewGame(Game newGame) {
-		this.newGame = newGame;
 	}
 	
 	public Game getGamebackObject() {
@@ -364,6 +356,9 @@ public class VideoGameBean {
 	public void setClientNames(List<String> clientNames) {
 		this.clientNames = clientNames;
 	}
+	
+	
+	
 	/*
 	public void updateDetailsGameRent() {
 		long gameId = allGames.get(gameToRent);
@@ -382,20 +377,52 @@ public class VideoGameBean {
 		
 	}*/
 	
+	public String getGameName() {
+		return gameName;
+	}
+
+
+	public void setGameName(String gameName) {
+		gameName = gameName;
+	}
+
+
+	public String getGameDifficultyLevel() {
+		return gameDifficultyLevel;
+	}
+
+
+	public void setGameDifficultyLevel(String gameDifficultyLevel) {
+		gameDifficultyLevel = gameDifficultyLevel;
+	}
+
+
+	public int getGameAgeLimit() {
+		return gameAgeLimit;
+	}
+
+
+	public void setGameAgeLimit(int gameAgeLimit) {
+		gameAgeLimit = gameAgeLimit;
+	}
+
+
 	public void rentTheGame() {
 		String[] split = clientName.split(" ");
 		Client client = videoGameRental.getClient(Long.parseLong(split[0]));
-		videoGameRental.rent(client, gameToRentObject);
+		System.out.println("##rentTheGame###" + client.getLastname() + gameSelected.getName());
+		videoGameRental.rent(client, gameSelected);
 		updateOwnGames();
 	}
 	
 	public void giveGameBack() {
+		System.out.println("##giveGameBack###");
 		String[] split = clientName.split(" ");
 		Client client = videoGameRental.getClient(Long.parseLong(split[0]));
 		
 		/*Long gameId = allGames.get(gameToRent);
 		Game back = videoGameRental.getGame(gameId);*/
-		System.out.println(client.getFristname()+" "+gamebackObject.getName());
+		System.out.println(client.getFristname()+" "+gamebackObject.getName() + " " + client.getGames());
 		videoGameRental.giveBack(client, gamebackObject);
 		updateOwnGames();
 	}
@@ -405,7 +432,9 @@ public class VideoGameBean {
 	}
 	
 	public void addGame () {
-		videoGameRental.insertGame(newGame, newGameCategory, newGameDeveloper);
+		System.out.println(newGameCategory.getName() + newGameDeveloper.getLastname() + gameName + " " + gameDifficultyLevel + " " + gameAgeLimit);
+		Game g = new Game(gameName, gameDifficultyLevel, gameAgeLimit);
+		videoGameRental.insertGame(g, newGameCategory, newGameDeveloper);
 	}
 	
 	public void modifyGame () {

@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -15,6 +16,7 @@ public class Client extends Person{
 	private int age;
 	@OneToMany(mappedBy="client")
 	private Set<Game> games;
+	
 	public Set<Game> getGames() {
 		return games;
 	}
@@ -45,16 +47,19 @@ public class Client extends Person{
 	//helper Methode
 	public void addGame(Game g){
 		games.add(g);
-		g.setClient(this);
 	}
 	
 	public void removeGame(Game g) {
+		System.out.println("##removeGame###");
+		/*System.out.println("##BEFORE###" + games.size());
 		games.remove(g);
+		System.out.println("##AFTER###" + games.size());
 		g.setClient(null);
+		System.out.println("##CLIENT###" + g.getClient());*/
 	}
 	@Override
 	public String toString() {
-		return super.toString() + "Client [description=" + description + ", age=" + age + ", games=" + games + "]";
+		return super.toString() + "Client [description=" + description + ", age=" + age;
 	}
 	
 }

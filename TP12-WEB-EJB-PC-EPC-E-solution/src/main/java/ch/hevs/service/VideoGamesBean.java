@@ -20,6 +20,8 @@ public class VideoGamesBean implements VideoGames{
 	public Client getClient(long idClient) {
 		Query query = em.createQuery("FROM Client c where c.id=:id");
 		query.setParameter("id", idClient);
+		Client test = (Client)query.getSingleResult();
+		System.out.println("#getClient" + test.toString());
 		return (Client) query.getSingleResult();
 	}
 	
@@ -94,14 +96,17 @@ public class VideoGamesBean implements VideoGames{
 	//Methods to Rent a Game or give back the Game
 	@Override
 	public void rent(Client c, Game g) {
-		c.addGame(g);
-		em.persist(c);
+		Game game = em.merge(g);
+		game.setClient(c);
+		em.persist(game);
 	}
 
 	@Override
 	public void giveBack(Client c, Game g) {
-		c.removeGame(g);
-		em.persist(c);
+		System.out.println("##giveBack###" + c.getLastname() + " " + g.getName());
+		Game game = em.merge(g);
+		game.setClient(null);
+		em.persist(game);
 	}
 
 	//Insert, Update, Delte Methods
@@ -156,30 +161,21 @@ public class VideoGamesBean implements VideoGames{
 
 	@Override
 	public void insertGame(Game g, Category c, Developer d) {
+		g.setCategory(c);
+		g.setDeveloper(d);
 		em.persist(g);
-		c.addGame(g);
-		em.persist(c);
-		d.addGame(g);
-		em.persist(d);
 	}
 
 	@Override
 	public void updateGame(Game g, Category c, Developer d) {
-		c.addGame(g);
-		d.addGame(g);
+		g.setCategory(c);
+		g.setDeveloper(d);
 		em.merge(g);
-		em.merge(c);
-		em.merge(d);
 	}
 
 	@Override
 	public void deleteGame(Game g) {
-		em.remove(g);
-		Category cat = g.getCategory();
-		Developer dev = g.getDeveloper();
-		cat.removeGame(g);
-		dev.removeGame(g);
-		em.merge(cat);
-		em.merge(dev);
+		Game deleteGame = em.merge(g);
+		em.remove(deleteGame);
 	}
 }
