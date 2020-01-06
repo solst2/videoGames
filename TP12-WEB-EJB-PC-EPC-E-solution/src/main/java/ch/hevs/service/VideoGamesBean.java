@@ -140,8 +140,9 @@ public class VideoGamesBean implements VideoGames{
 	}
 
 	@Override
-	public void deleteDeveloper(Object d) {
-		em.remove(d);
+	public void deleteDeveloper(Developer d) {
+		Developer dev = em.merge(d);
+		em.remove(dev);
 	}
 
 	@Override
@@ -150,13 +151,14 @@ public class VideoGamesBean implements VideoGames{
 	}
 
 	@Override
-	public void update(Category c) {
+	public void updateCategory(Category c) {
 		em.merge(c);
 	}
 
 	@Override
-	public void delete(Category c) {
-		em.remove(c);
+	public void deleteCategory(Category c) {
+		Category cat = em.merge(c);
+		em.remove(cat);
 	}
 
 	@Override

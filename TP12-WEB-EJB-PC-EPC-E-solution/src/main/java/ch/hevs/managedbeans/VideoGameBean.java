@@ -34,13 +34,6 @@ public class VideoGameBean {
 	private String gameToRent;
 	private Game gameToRentObject;
 	private List<Game> gamesToRent;
-	/*private String rentGameName;
-	private String rentGamedifficultyLevel;
-	private int rentGameAgeLimit;
-	private String rentGameDeveloperName;
-	private String rentGameDeveloperMail;
-	private String rentGameCategoryName;
-	private String rentGameCategoryDescription;*/
 	
 	//give back game
 	private List<String> ownGamesString;
@@ -194,63 +187,6 @@ public class VideoGameBean {
 	public void setGameSelected(Game gameSelected) {
 		this.gameSelected = gameSelected;
 	}
-/*
-	public String getRentGameName() {
-		return rentGameName;
-	}
-
-	public void setRentGameName(String rentGameName) {
-		this.rentGameName = rentGameName;
-	}
-
-	public String getRentGamedifficultyLevel() {
-		return rentGamedifficultyLevel;
-	}
-
-	public void setRentGamedifficultyLevel(String rentGamedifficultyLevel) {
-		this.rentGamedifficultyLevel = rentGamedifficultyLevel;
-	}
-
-	public int getRentGameAgeLimit() {
-		return rentGameAgeLimit;
-	}
-
-	public void setRentGameAgeLimit(int rentGameAgeLimit) {
-		this.rentGameAgeLimit = rentGameAgeLimit;
-	}
-
-	public String getRentGameDeveloperName() {
-		return rentGameDeveloperName;
-	}
-
-	public void setRentGameDeveloperName(String rentGameDeveloperName) {
-		this.rentGameDeveloperName = rentGameDeveloperName;
-	}
-
-	public String getRentGameDeveloperMail() {
-		return rentGameDeveloperMail;
-	}
-
-	public void setRentGameDeveloperMail(String rentGameDeveloperMail) {
-		this.rentGameDeveloperMail = rentGameDeveloperMail;
-	}
-
-	public String getRentGameCategoryName() {
-		return rentGameCategoryName;
-	}
-
-	public void setRentGameCategoryName(String rentGameCategoryName) {
-		this.rentGameCategoryName = rentGameCategoryName;
-	}
-
-	public String getRentGameCategoryDescription() {
-		return rentGameCategoryDescription;
-	}
-
-	public void setRentGameCategoryDescription(String rentGameCategoryDescription) {
-		this.rentGameCategoryDescription = rentGameCategoryDescription;
-	}
-	*/
 
 	public List<String> getOwnGamesString() {
 		ownGamesString= new ArrayList<String>();
@@ -357,33 +293,13 @@ public class VideoGameBean {
 		this.clientNames = clientNames;
 	}
 	
-	
-	
-	/*
-	public void updateDetailsGameRent() {
-		long gameId = allGames.get(gameToRent);
-		gameToRentObject=videoGameRental.getGame(gameId);
-		gameSelected = gameToRentObject;
-		
-		rentGameName=gameToRentObject.getName();
-		rentGamedifficultyLevel=gameToRentObject.getDifficultyLevel();
-		rentGameAgeLimit=gameToRentObject.getAgeLimit();
-		Developer dev= gameToRentObject.getDeveloper();
-		rentGameDeveloperName=dev.getFristname()+" "+dev.getLastname();
-		rentGameDeveloperMail=dev.getMail();
-		Category cat = gameToRentObject.getCategory();
-		rentGameCategoryName = cat.getName();
-		rentGameCategoryDescription = cat.getDescription();
-		
-	}*/
-	
 	public String getGameName() {
 		return gameName;
 	}
 
 
 	public void setGameName(String gameName) {
-		gameName = gameName;
+		this.gameName = gameName;
 	}
 
 
@@ -393,7 +309,7 @@ public class VideoGameBean {
 
 
 	public void setGameDifficultyLevel(String gameDifficultyLevel) {
-		gameDifficultyLevel = gameDifficultyLevel;
+		this.gameDifficultyLevel = gameDifficultyLevel;
 	}
 
 
@@ -403,7 +319,7 @@ public class VideoGameBean {
 
 
 	public void setGameAgeLimit(int gameAgeLimit) {
-		gameAgeLimit = gameAgeLimit;
+		this.gameAgeLimit = gameAgeLimit;
 	}
 
 
@@ -441,7 +357,7 @@ public class VideoGameBean {
 		videoGameRental.updateGame(gameSelected, newGameCategory, newGameDeveloper);
 	}
 	
-	public void deleteGAme () {
+	public void deleteGame () {
 		videoGameRental.deleteGame(gameSelected);
 	}
 

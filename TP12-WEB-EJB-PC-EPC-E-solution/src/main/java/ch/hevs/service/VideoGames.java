@@ -29,7 +29,7 @@ public interface VideoGames {
 	
 	void updateDeveloper(Developer d);
 	
-	void deleteDeveloper(Object d);
+	void deleteDeveloper(Developer d);
 	
 	//Methods for the Categories
 	Category getCategory(long idCategory);
@@ -40,9 +40,9 @@ public interface VideoGames {
 	
 	void insertCategory(Category c);
 	
-	void update(Category c);
+	void updateCategory(Category c);
 	
-	void delete(Category c);
+	void deleteCategory(Category c);
 	
 	//Mehtods for the Games
 	Game getGame(long idGame);
