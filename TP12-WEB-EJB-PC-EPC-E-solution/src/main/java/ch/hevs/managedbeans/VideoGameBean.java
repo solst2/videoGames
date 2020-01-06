@@ -192,8 +192,10 @@ public class VideoGameBean {
 	}
 
 	public Game getGameSelected() {
-		setNewGameCategoryString(gameSelected.getCategory().toString());
-		setNewGameDeveloperString(gameSelected.getDeveloper().toString());
+		if (gameSelected != null) {
+			setNewGameCategoryString(gameSelected.getCategory().toString());
+			setNewGameDeveloperString(gameSelected.getDeveloper().toString());
+		}
 		return gameSelected;
 	}
 
