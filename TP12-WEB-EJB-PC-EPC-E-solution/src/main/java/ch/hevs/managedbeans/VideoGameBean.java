@@ -405,6 +405,7 @@ public class VideoGameBean {
 	}
 	
 	public void addGame () {
+		System.out.println("-----new name GAme: "+newGame.getName());
 		videoGameRental.insertGame(newGame, newGameCategory, newGameDeveloper);
 	}
 	
