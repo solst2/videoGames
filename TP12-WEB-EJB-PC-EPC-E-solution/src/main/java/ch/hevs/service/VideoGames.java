@@ -58,5 +58,5 @@ public interface VideoGames {
 	//Methods fot the Rental
 	void rent(Client c, Game g);
 	
-	void giveBack(Client c, Game g);
+	public void giveBack(Client c, Game g);
 }
