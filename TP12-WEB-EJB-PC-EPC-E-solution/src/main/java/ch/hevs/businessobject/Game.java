@@ -90,4 +90,9 @@ public class Game {
         Game gameB = (Game) obj;
         return id == gameB.getId();
 	}
+	@Override
+    public int hashCode() 
+    { 
+        return (int)this.id; 
+    } 
 }

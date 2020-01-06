@@ -3,6 +3,7 @@ package ch.hevs.managedbeans;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
+import java.util.Iterator;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.ViewHandler;
@@ -33,13 +34,13 @@ public class VideoGameBean {
 	private String gameToRent;
 	private Game gameToRentObject;
 	private List<Game> gamesToRent;
-	private String rentGameName;
+	/*private String rentGameName;
 	private String rentGamedifficultyLevel;
 	private int rentGameAgeLimit;
 	private String rentGameDeveloperName;
 	private String rentGameDeveloperMail;
 	private String rentGameCategoryName;
-	private String rentGameCategoryDescription;
+	private String rentGameCategoryDescription;*/
 	
 	//give back game
 	private List<String> ownGamesString;
@@ -199,7 +200,7 @@ public class VideoGameBean {
 	public void setGameSelected(Game gameSelected) {
 		this.gameSelected = gameSelected;
 	}
-
+/*
 	public String getRentGameName() {
 		return rentGameName;
 	}
@@ -255,7 +256,7 @@ public class VideoGameBean {
 	public void setRentGameCategoryDescription(String rentGameCategoryDescription) {
 		this.rentGameCategoryDescription = rentGameCategoryDescription;
 	}
-	
+	*/
 
 	public List<String> getOwnGamesString() {
 		ownGamesString= new ArrayList<String>();
@@ -296,16 +297,22 @@ public class VideoGameBean {
 	public List<Game> getGamesToRent() {
 		gamesToRent = new ArrayList<Game>();
 		List<Game> gamesToRentObject = new ArrayList<Game>(allGameObjects);
-		gamesToRentObject.removeAll(ownGames);/*
+		gamesToRentObject.removeAll(ownGames);
+		System.out.println("games to Rentbefore: "+gamesToRentObject.size());
 		//if it is allready given to a client
-		for (Game g:gamesToRentObject) {
+		Iterator<Game> itr = gamesToRentObject.iterator();
+	      
+		while(itr.hasNext()) {
+			Game g = itr.next();
 			if (g.getClient()!=null) {
-				gamesToRentObject.remove(g);
-			}
-		}*/
-		System.out.println("games to Rent: "+gamesToRentObject.size());
+				itr.remove();
+		    }
+	    }
+		System.out.println("games to Rentafter: "+gamesToRentObject.size());
 		gamesToRent= gamesToRentObject;
-		this.gameSelected=gamesToRent.get(0);
+		if(gamesToRentObject.size()!=0) {
+			this.gameSelected=gamesToRent.get(0);
+		}
 		return gamesToRent;
 	}
 

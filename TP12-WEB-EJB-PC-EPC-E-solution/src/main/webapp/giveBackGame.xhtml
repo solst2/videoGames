@@ -13,7 +13,7 @@
         <h:form>
         <h:outputText value="select the game to give back: "></h:outputText>
 	        	<h:selectOneMenu value="#{videoGameBean.gameback}" >
-	        		<f:selectItems value="#{videoGameBean.allGameObjects}"/>
+	        		<f:selectItems value="#{videoGameBean.ownGames}"/>
 	        	</h:selectOneMenu>
 		<br></br>
         <h:commandLink action="#{videoGameBean.giveGameBack}">
