@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+	<ui:define name="content">
+		<h:form>
+			<br></br>
+			<h:outputLabel value="Overview of Categories: "></h:outputLabel>
+			<br></br>
+			<h:form>
+				<h:dataTable value="#{categoryBean.allCategoryObjects}" var="categories">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="ID"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{categories.id}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Name"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{categories.name}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Description"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{categories.description}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value=""></h:outputText>
+						</f:facet>
+						<h:commandButton value="manage category"
+							action="manageCategory">
+							<f:setPropertyActionListener
+								target="#{categoryBean.categorySelected}" value="#{categories}" />
+						</h:commandButton>
+					</h:column>
+				</h:dataTable>
+			<br></br>
+			<br></br>
+			<h:commandButton value="add category" action="addCategory"></h:commandButton>
+			<br></br>
+			</h:form>
+			<br></br>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

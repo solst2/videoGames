@@ -341,14 +341,13 @@ public class VideoGameBean {
 		this.clientNames = clientNames;
 	}
 	
-	
 	public String getGameName() {
 		return gameName;
 	}
 
 
 	public void setGameName(String gameName) {
-		gameName = gameName;
+		this.gameName = gameName;
 	}
 
 
@@ -358,7 +357,7 @@ public class VideoGameBean {
 
 
 	public void setGameDifficultyLevel(String gameDifficultyLevel) {
-		gameDifficultyLevel = gameDifficultyLevel;
+		this.gameDifficultyLevel = gameDifficultyLevel;
 	}
 
 
@@ -368,7 +367,7 @@ public class VideoGameBean {
 
 
 	public void setGameAgeLimit(int gameAgeLimit) {
-		gameAgeLimit = gameAgeLimit;
+		this.gameAgeLimit = gameAgeLimit;
 	}
 
 	//methods
