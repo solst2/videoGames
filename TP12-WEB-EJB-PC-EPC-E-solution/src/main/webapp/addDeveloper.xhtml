@@ -8,21 +8,25 @@
 
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
 	<ui:define name="content">
+		<br></br>
 		<h:form>
-			<h:outputLabel value="Hello Admin"></h:outputLabel>
 			<br></br>
-			<h:outputLabel value="Menu:"></h:outputLabel>
+			<h:outputLabel value="Developer Firstname"></h:outputLabel>
 			<br></br>
-			<h:commandButton value="manage games" action="manageGameOverview"></h:commandButton>
+			<h:inputText value="#{videoGameBean.developerFirstname}" />
+			<br></br>
+			<h:outputLabel value="Developer Lastname"></h:outputLabel>
+			<br></br>
+			<h:inputText value="#{videoGameBean.developerLastname}" />
+			<br></br>
+			<h:outputLabel value="Developer Email"></h:outputLabel>
+			<br></br>
+			<h:inputText value="#{videoGameBean.developerEmail}" />
 			<br></br>
 			<br></br>
-			<h:commandButton value="manage clients" action="manageClientOverview"></h:commandButton>
-			<br></br>
-			<br></br>
-			<h:commandButton value="manage developers" action="manageDeveloperOverview"></h:commandButton>
-			<br></br>
-			<br></br>
-			<h:commandButton value="manage categories" action="manageCategoryOverview"></h:commandButton>
+			<h:commandButton value="add the developer ->"
+				action="#{videoGameBean.addDeveloper}">
+			</h:commandButton>
 		</h:form>
 	</ui:define>
 </ui:composition>

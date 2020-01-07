@@ -10,42 +10,48 @@
 	<ui:define name="content">
 		<h:form>
 			<br></br>
-			<h:outputLabel value="Overview of Categories: "></h:outputLabel>
+			<h:outputLabel value="Overview of developers: "></h:outputLabel>
 			<br></br>
 			<h:form>
-				<h:dataTable value="#{videoGameBean.allCategoryObjects}" var="categories">
+				<h:dataTable value="#{videoGameBean.allDeveloperObjects}" var="developers">
 					<h:column>
 						<f:facet name="header">
 							<h:outputText value="ID"></h:outputText>
 						</f:facet>
-						<h:outputText value="#{categories.id}" />
+						<h:outputText value="#{developers.id}" />
 					</h:column>
 					<h:column>
 						<f:facet name="header">
-							<h:outputText value="Name"></h:outputText>
+							<h:outputText value="Firstname"></h:outputText>
 						</f:facet>
-						<h:outputText value="#{categories.name}" />
+						<h:outputText value="#{developers.fristname}" />
 					</h:column>
 					<h:column>
 						<f:facet name="header">
-							<h:outputText value="Description"></h:outputText>
+							<h:outputText value="Lastname"></h:outputText>
 						</f:facet>
-						<h:outputText value="#{categories.description}" />
+						<h:outputText value="#{developers.lastname}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Email"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{developers.mail}" />
 					</h:column>
 					<h:column>
 						<f:facet name="header">
 							<h:outputText value=""></h:outputText>
 						</f:facet>
-						<h:commandButton value="manage category"
-							action="manageCategory">
+						<h:commandButton value="manage developer"
+							action="manageDeveloper">
 							<f:setPropertyActionListener
-								target="#{videoGameBean.categorySelected}" value="#{categories}" />
+								target="#{videoGameBean.developerSelected}" value="#{developers}" />
 						</h:commandButton>
 					</h:column>
 				</h:dataTable>
 			<br></br>
 			<br></br>
-			<h:commandButton value="add category" action="addCategory"></h:commandButton>
+			<h:commandButton value="add developer" action="addDeveloper"></h:commandButton>
 			<br></br>
 			</h:form>
 			<br></br>

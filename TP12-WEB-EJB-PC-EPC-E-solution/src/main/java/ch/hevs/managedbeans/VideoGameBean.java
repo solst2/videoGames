@@ -57,6 +57,17 @@ public class VideoGameBean {
 	private Developer newGameDeveloper;
 	private String newGameDeveloperString;
 	
+	//Developers
+	private String developerFirstname;
+	private String developerLastname;
+	private String developerEmail;
+	private Developer developerSelected;
+	
+	//Categories
+	private String categoryName;
+	private String categoryDescription;
+	private Category categorySelected;
+	
 	@PostConstruct
 	public void initialize() throws NamingException {
 		InitialContext ctx = new InitialContext();
@@ -369,9 +380,65 @@ public class VideoGameBean {
 	public void setGameAgeLimit(int gameAgeLimit) {
 		this.gameAgeLimit = gameAgeLimit;
 	}
-
-	//methods
 	
+	//Categories
+		public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
+	public String getCategoryDescription() {
+		return categoryDescription;
+	}
+
+	public void setCategoryDescription(String categoryDescription) {
+		this.categoryDescription = categoryDescription;
+	}
+
+	public Category getCategorySelected() {
+		return categorySelected;
+	}
+
+	public void setCategorySelected(Category categorySelected) {
+		this.categorySelected = categorySelected;
+	}
+
+	//Developers
+	public String getDeveloperFirstname() {
+		return developerFirstname;
+	}
+
+	public void setDeveloperFirstname(String developerFirstname) {
+		this.developerFirstname = developerFirstname;
+	}
+
+	public String getDeveloperLastname() {
+		return developerLastname;
+	}
+
+	public void setDeveloperLastname(String developerLastname) {
+		this.developerLastname = developerLastname;
+	}
+
+	public String getDeveloperEmail() {
+		return developerEmail;
+	}
+
+	public void setDeveloperEmail(String developerEmail) {
+		this.developerEmail = developerEmail;
+	}
+
+	public Developer getDeveloperSelected() {
+		return developerSelected;
+	}
+
+	public void setDeveloperSelected(Developer developerSelected) {
+		this.developerSelected = developerSelected;
+	}
+
 	public String rentTheGame() {
 		String[] split = clientName.split(" ");
 		Client client = videoGameRental.getClient(Long.parseLong(split[0]));
@@ -400,6 +467,14 @@ public class VideoGameBean {
 		gameSelected = videoGameRental.getGame((Long)event.getNewValue());
 	}
 	
+	public void updateIdDeveloperEdit(ValueChangeEvent event) {
+		developerSelected = videoGameRental.getDeveloper((Long)event.getNewValue());
+	}
+	
+	public void updateIdCategoryEdit(ValueChangeEvent event) {
+		categorySelected = videoGameRental.getCategory((Long)event.getNewValue());
+	}
+	
 	public String addGame () {
 		Game game = new Game(newGameName, newGameDifficultyLevel, newGameAgeLimit);
 		videoGameRental.insertGame(game, newGameCategory, newGameDeveloper);
@@ -416,6 +491,46 @@ public class VideoGameBean {
 	public String deleteGame () {
 		videoGameRental.deleteGame(gameSelected);
 		this.resultString = "The game is deleted: "+gameSelected.getName();
+		return "showAdminResult";
+	}
+	
+	//Category
+	public String addCategory () {
+		Category category = new Category(categoryName, categoryDescription);
+		videoGameRental.insertCategory(category);
+		this.resultString = "The category is added: "+category.getName();
+		return "showAdminResult";
+	}
+	
+	public String modifyCategory () {
+		this.resultString = "The category is updated: "+categorySelected.getName();
+		videoGameRental.updateCategory(categorySelected);
+		return "showAdminResult";
+	}
+	
+	public String deleteCategory () {
+		videoGameRental.deleteCategory(categorySelected);
+		this.resultString = "The category is deleted: "+categorySelected.getName();
+		return "showAdminResult";
+	}
+	
+	//Developer
+	public String addDeveloper () {
+		Developer developer = new Developer(developerFirstname, developerLastname, developerEmail);
+		videoGameRental.insertDeveloper(developer);
+		this.resultString = "The developer is added: "+developer.getFristname() + " " + developer.getLastname();
+		return "showAdminResult";
+	}
+	
+	public String modifyDeveloper () {
+		this.resultString = "The developer is added: "+developerSelected.getFristname() + " " + developerSelected.getLastname();
+		videoGameRental.updateDeveloper(developerSelected);
+		return "showAdminResult";
+	}
+	
+	public String deleteDeveloper () {
+		videoGameRental.deleteDeveloper(developerSelected);
+		this.resultString = "The developer is deleted: "+developerSelected.getFristname() + " " + developerSelected.getLastname();
 		return "showAdminResult";
 	}
 

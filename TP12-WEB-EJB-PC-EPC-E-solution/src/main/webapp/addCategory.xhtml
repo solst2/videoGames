@@ -13,14 +13,15 @@
 			<br></br>
 			<h:outputLabel value="Category name"></h:outputLabel>
 			<br></br>
-			<h:inputText value="#{categoryBean.categoryName}" />
+			<h:inputText value="#{videoGameBean.categoryName}" />
 			<br></br>
 			<h:outputLabel value="Category description"></h:outputLabel>
 			<br></br>
-			<h:inputText value="#{categoryBean.categoryDescription}" />
+			<h:inputText value="#{videoGameBean.categoryDescription}" />
+			<br></br>
 			<br></br>
 			<h:commandButton value="add the category ->"
-							action="#{categoryBean.addCategory}">
+							action="#{videoGameBean.addCategory}">
 						</h:commandButton>
 		</h:form>
 	</ui:define>

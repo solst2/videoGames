@@ -1,11 +1,7 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
-<faces-config
-    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
-    version="2.2">
-	<managed-bean>
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+ <managed-bean>
   <managed-bean-name>videoGameBean</managed-bean-name>
   <managed-bean-class>ch.hevs.managedbeans.VideoGameBean</managed-bean-class>
   <managed-bean-scope>session</managed-bean-scope>
@@ -103,48 +99,3 @@
  </navigation-rule>
  <application/>
 </faces-config>
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
- <managed-bean>
-  <managed-bean-name>videoGameBean</managed-bean-name>
-  <managed-bean-class>ch.hevs.managedbeans.VideoGameBean</managed-bean-class>
-  <managed-bean-scope>session</managed-bean-scope>
- </managed-bean>
- <managed-bean>
-  <managed-bean-name>categoryBean</managed-bean-name>
-  <managed-bean-class>ch.hevs.managedbeans.CategoryBean</managed-bean-class>
-  <managed-bean-scope>session</managed-bean-scope>
- </managed-bean>
- <navigation-rule>
-  <display-name>welcomeVideoGames.xhtml</display-name>
-  <from-view-id>/welcomeVideoGames.xhtml</from-view-id>
- </navigation-rule>
- <navigation-rule>
-  <display-name>overviewFrom.xhtml</display-name>
-  <from-view-id>/overviewFrom.xhtml</from-view-id>
- </navigation-rule>
- <navigation-rule>
-  <display-name>rentGame.xhtml</display-name>
-  <from-view-id>/rentGame.xhtml</from-view-id>
- </navigation-rule>
- <navigation-rule>
-  <display-name>giveBackGame.xhtml</display-name>
-  <from-view-id>/giveBackGame.xhtml</from-view-id>
- </navigation-rule>
- <navigation-rule>
-  <display-name>detailsGame.xhtml</display-name>
-  <from-view-id>/detailsGame.xhtml</from-view-id>
- </navigation-rule>
- <navigation-rule>
-  <display-name>menuAdmin.xhtml</display-name>
-  <from-view-id>/menuAdmin.xhtml</from-view-id>
- </navigation-rule>
- <navigation-rule>
-  <display-name>manageGameOverview.xhtml</display-name>
-  <from-view-id>/manageGameOverview.xhtml</from-view-id>
- </navigation-rule>
- <application/>
-</faces-config>
->>>>>>> 03bf54403cc7183725346bcd428bbc335f80824a

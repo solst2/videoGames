@@ -12,27 +12,29 @@
 		<h:form>
 			<br></br>
 			<br></br>
-			<h:outputLabel value="Category informations"></h:outputLabel>
+			<h:outputLabel value="Developer informations"></h:outputLabel>
 			<br></br>
 			<br></br>
-			<h:outputLabel value="Category name"></h:outputLabel>
+			<h:outputLabel value="Developer firstname"></h:outputLabel>
 			<br></br>
-			<h:inputText value="#{videoGameBean.categorySelected.name}" />
+			<h:inputText value="#{videoGameBean.developerSelected.fristname}" />
 			<br></br>
-			<h:outputLabel value="Category Description"></h:outputLabel>
+			<h:outputLabel value="Developer lastname"></h:outputLabel>
 			<br></br>
-			<h:inputText value="#videoGameBean.categorySelected.description}" />
+			<h:inputText value="#{videoGameBean.developerSelected.lastname}" />
 			<br></br>
-			<h:outputLabel value="Game developer"></h:outputLabel>
+			<h:outputLabel value="Developer email"></h:outputLabel>
+			<br></br>
+			<h:inputText value="#{videoGameBean.developerSelected.mail}" />
 			<br></br>
 			<br></br>
 			<h:commandButton value="safe the modifications ->"
-				action="#{videoGameBean.modifyCategory}">
+				action="#{videoGameBean.modifyDeveloper}">
 			</h:commandButton>
 			<br></br>
 			<br></br>
-			<h:commandButton value="delete the category ->"
-				action="#{videoGameBean.deleteCategory}">
+			<h:commandButton value="delete the developer ->"
+				action="#{videoGameBean.deleteDeveloper}">
 			</h:commandButton>
 		</h:form>
 	</ui:define>
