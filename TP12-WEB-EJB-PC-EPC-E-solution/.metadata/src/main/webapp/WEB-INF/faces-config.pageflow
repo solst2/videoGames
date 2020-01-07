@@ -1,2 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pageflow:Pageflow xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14141592409490" configfile="/TP12-WEB-EJB-PC-EPC-E-solution/src/main/webapp/WEB-INF/faces-config.xml"/>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14141592409490" configfile="/TP12-WEB-EJB-PC-EPC-E-solution/src/main/webapp/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="welcomeVideoGames.xhtml" x="-12" y="204" id="pf15783745653310" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf15783745653321 pf15783745653322" path="/welcomeVideoGames.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="overviewForm.xhtml" x="216" y="84" id="pf15783745653323" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf15783745653324 pf15783745653325" inlinks="pf15783745653321" path="/overviewForm.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="menuAdmin.xhtml" x="192" y="374" id="pf15783745653326" referenceLink="//@navigationRule.5/@fromViewId|" outlinks="pf15783745653327" inlinks="pf15783745653322" path="/menuAdmin.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="rentGame.xhtml" x="576" y="48" id="pf15783745653338" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf15783745653339" inlinks="pf15783745653324" path="/rentGame.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="giveBackGame.xhtml" x="543" y="180" id="pf157837456533310" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf157837456533311" inlinks="pf15783745653325" path="/giveBackGame.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="showClientResult.xhtml" x="912" y="120" id="pf157837456533312" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" inlinks="pf15783745653339 pf157837456533311" path="/showClientResult.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="manageGameOverview.xhtml" x="312" y="386" id="pf157837456533313" referenceLink="//@navigationRule.10/@fromViewId|" outlinks="pf157837456533314 pf157837456533315" inlinks="pf15783745653327" path="/manageGameOverview.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="manageGame.xhtml" x="576" y="324" id="pf157837456533316" referenceLink="//@navigationRule.10/@navigationCase.0/@toViewId|" outlinks="pf157837456533317 pf157837456533318" inlinks="pf157837456533314" path="/manageGame.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="showAdminResult.xhtml" x="936" y="394" id="pf157837456533319" referenceLink="//@navigationRule.9/@navigationCase.0/@toViewId|" inlinks="pf157837456533317 pf157837456533318 pf157837456533320" path="/showAdminResult.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="addGame.xhtml" x="592" y="480" id="pf157837456533321" referenceLink="//@navigationRule.10/@navigationCase.1/@toViewId|" outlinks="pf157837456533320" inlinks="pf157837456533315" path="/addGame.xhtml"/>
+  <links id="pf15783745653321" target="pf15783745653323" source="pf15783745653310" outcome="overviewForm"/>
+  <links id="pf15783745653322" target="pf15783745653326" source="pf15783745653310" outcome="menuAdmin"/>
+  <links id="pf15783745653324" target="pf15783745653338" source="pf15783745653323" outcome="rentGame"/>
+  <links id="pf15783745653325" target="pf157837456533310" source="pf15783745653323" outcome="giveBackGame"/>
+  <links id="pf15783745653339" target="pf157837456533312" source="pf15783745653338" outcome="#{videoGameBean.rentTheGame}"/>
+  <links id="pf157837456533311" target="pf157837456533312" source="pf157837456533310" outcome="#{videoGameBean.giveGameBack}"/>
+  <links id="pf15783745653327" target="pf157837456533313" source="pf15783745653326" outcome="manageGameOverview"/>
+  <links id="pf157837456533317" target="pf157837456533319" source="pf157837456533316" outcome="#{videoGameBean.modifyGame}"/>
+  <links id="pf157837456533318" target="pf157837456533319" source="pf157837456533316" outcome="#{videoGameBean.deleteGame}"/>
+  <links id="pf157837456533320" target="pf157837456533319" source="pf157837456533321" outcome="#{videoGameBean.addGame}"/>
+  <links id="pf157837456533314" target="pf157837456533316" source="pf157837456533313" outcome="manageGame"/>
+  <links id="pf157837456533315" target="pf157837456533321" source="pf157837456533313" outcome="addGame"/>
+</pageflow:Pageflow>

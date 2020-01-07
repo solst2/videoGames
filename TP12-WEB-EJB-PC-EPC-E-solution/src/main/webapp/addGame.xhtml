@@ -14,15 +14,15 @@
 			<br></br>
 			<h:outputLabel value="Game name"></h:outputLabel>
 			<br></br>
-			<h:inputText value="#{videoGameBean.gameName}" />
+			<h:inputText value="#{videoGameBean.newGameName}" />
 			<br></br>
 			<h:outputLabel value="Game difficulty level"></h:outputLabel>
 			<br></br>
-			<h:inputText value="#{videoGameBean.gameDifficultyLevel}" />
+			<h:inputText value="#{videoGameBean.newGameDifficultyLevel}" />
 			<br></br>
 			<h:outputLabel value="Game age limit"></h:outputLabel>
 			<br></br>
-			<h:inputText value="#{videoGameBean.gameAgeLimit}" />
+			<h:inputText value="#{videoGameBean.newGameAgeLimit}" />
 			<br></br>
 			<h:outputLabel value="Game category"></h:outputLabel>
 			<br></br>
@@ -37,8 +37,8 @@
 			</h:selectOneMenu>
 			<br></br>
 			<h:commandButton value="add the game ->"
-							action="#{videoGameBean.addGame}">
-						</h:commandButton>
+				action="#{videoGameBean.addGame}">
+			</h:commandButton>
 		</h:form>
 	</ui:define>
 </ui:composition>
