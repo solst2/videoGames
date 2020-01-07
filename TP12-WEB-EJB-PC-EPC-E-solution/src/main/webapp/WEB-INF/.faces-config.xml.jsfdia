@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PROCESS model-entity="JSFProcess">
  <PROCESS-ITEM NAME="rules:#welcomeVideoGames.xhtml"
-  PATH="/welcomeVideoGames.xhtml" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  PATH="/welcomeVideoGames.xhtml" SHAPE="136,304,50,57" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#welcomeVideoGames.xhtml:0" NAME="item"
    PATH="/welcomeVideoGames.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT ID="overviewForm::#overviewForm.xhtml"
@@ -13,7 +13,7 @@
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#overviewForm.xhtml"
-  PATH="/overviewForm.xhtml" SHAPE="256,33,0,0" model-entity="JSFProcessGroup">
+  PATH="/overviewForm.xhtml" SHAPE="352,264,50,73" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#overviewForm.xhtml:0" NAME="item"
    PATH="/overviewForm.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT ID="rentGame::#rentGame.xhtml" NAME="output"
@@ -22,10 +22,15 @@
    <PROCESS-ITEM-OUTPUT ID="giveBackGame::#giveBackGame.xhtml"
     NAME="output1" PATH="/giveBackGame.xhtml"
     TARGET="rules:#giveBackGame.xhtml" TITLE="giveBackGame" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="#{videoGameBean.showGameDetails}::#detailsGame.xhtml"
+    NAME="output2" PATH="/detailsGame.xhtml"
+    TARGET="rules:#detailsGame.xhtml"
+    TITLE="#{videoGameBean.showGameDetails}" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#rentGame.xhtml" PATH="/rentGame.xhtml"
-  SHAPE="480,17,0,0" model-entity="JSFProcessGroup">
+  SHAPE="576,248,50,57" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#rentGame.xhtml:0" NAME="item"
    PATH="/rentGame.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
@@ -33,10 +38,15 @@
     NAME="output" PATH="/showClientResult.xhtml"
     TARGET="rules:#showClientResult.xhtml"
     TITLE="#{videoGameBean.rentTheGame}" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="#{videoGameBean.showGameDetails}::#detailsGame.xhtml"
+    NAME="output1" PATH="/detailsGame.xhtml"
+    TARGET="rules:#detailsGame.xhtml"
+    TITLE="#{videoGameBean.showGameDetails}" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#giveBackGame.xhtml"
-  PATH="/giveBackGame.xhtml" SHAPE="480,161,0,0" model-entity="JSFProcessGroup">
+  PATH="/giveBackGame.xhtml" SHAPE="576,392,50,41" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#giveBackGame.xhtml:0" NAME="item"
    PATH="/giveBackGame.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
@@ -47,12 +57,12 @@
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#detailsGame.xhtml" PATH="/detailsGame.xhtml"
-  SHAPE="32,529,0,0" model-entity="JSFProcessGroup">
+  SHAPE="560,112,50,41" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#detailsGame.xhtml:0" NAME="item"
    PATH="/detailsGame.xhtml" model-entity="JSFProcessItem"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#menuAdmin.xhtml" PATH="/menuAdmin.xhtml"
-  SHAPE="256,177,0,0" model-entity="JSFProcessGroup">
+  SHAPE="352,408,50,73" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#menuAdmin.xhtml:0" NAME="item"
    PATH="/menuAdmin.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
@@ -64,20 +74,25 @@
     NAME="output1" PATH="/managePersonOverview.xhtml"
     TARGET="rules:#managePersonOverview.xhtml"
     TITLE="#{videoGameBean.managedPersonsView}" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="manageCategoryOverview::#manageCategoryOverview.xhtml"
+    NAME="output2" PATH="/manageCategoryOverview.xhtml"
+    TARGET="rules:#manageCategoryOverview.xhtml"
+    TITLE="manageCategoryOverview" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#showAdminResult.xhtml"
-  PATH="/showAdminResult.xhtml" SHAPE="944,273,0,0" model-entity="JSFProcessGroup">
+  PATH="/showAdminResult.xhtml" SHAPE="1104,536,50,41" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#showAdminResult.xhtml:0" NAME="item"
    PATH="/showAdminResult.xhtml" model-entity="JSFProcessItem"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#showClientResult.xhtml"
-  PATH="/showClientResult.xhtml" SHAPE="704,33,0,0" model-entity="JSFProcessGroup">
+  PATH="/showClientResult.xhtml" SHAPE="944,264,50,41" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#showClientResult.xhtml:0" NAME="item"
    PATH="/showClientResult.xhtml" model-entity="JSFProcessItem"/>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#manageGame.xhtml" PATH="/manageGame.xhtml"
-  SHAPE="704,289,0,0" model-entity="JSFProcessGroup">
+  SHAPE="800,472,50,57" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#manageGame.xhtml:0" NAME="item"
    PATH="/manageGame.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
@@ -93,7 +108,7 @@
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#addGame.xhtml" PATH="/addGame.xhtml"
-  SHAPE="704,433,0,0" model-entity="JSFProcessGroup">
+  SHAPE="800,576,50,41" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#addGame.xhtml:0" NAME="item"
    PATH="/addGame.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT
@@ -103,7 +118,7 @@
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#manageGameOverview.xhtml"
-  PATH="/manageGameOverview.xhtml" SHAPE="480,273,0,0" model-entity="JSFProcessGroup">
+  PATH="/manageGameOverview.xhtml" SHAPE="544,504,50,57" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#manageGameOverview.xhtml:0" NAME="item"
    PATH="/manageGameOverview.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT ID="manageGame::#manageGame.xhtml" NAME="output"
@@ -114,17 +129,81 @@
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#managePersonOverview.xhtml"
-  PATH="/managePersonOverview.xhtml" SHAPE="360,520,50,41" model-entity="JSFProcessGroup">
+  PATH="/managePersonOverview.xhtml" SHAPE="544,720,50,57" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#managePersonOverview.xhtml:0" NAME="item"
    PATH="/managePersonOverview.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT ID="managePerson::#managePerson.xhtml"
     NAME="output" PATH="/managePerson.xhtml"
     TARGET="rules:#managePerson.xhtml" TITLE="managePerson" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="addPerson::#addPerson.xhtml" NAME="output1"
+    PATH="/addPerson.xhtml" TARGET="rules:#addPerson.xhtml"
+    TITLE="addPerson" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#managePerson.xhtml"
-  PATH="/managePerson.xhtml" SHAPE="600,528,50,41" model-entity="JSFProcessGroup">
+  PATH="/managePerson.xhtml" SHAPE="800,664,50,57" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#managePerson.xhtml:0" NAME="item"
-   PATH="/managePerson.xhtml" model-entity="JSFProcessItem"/>
+   PATH="/managePerson.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="#{videoGameBean.modifyPerson}::#showAdminResult.xhtml"
+    NAME="output" PATH="/showAdminResult.xhtml"
+    TARGET="rules:#showAdminResult.xhtml"
+    TITLE="#{videoGameBean.modifyPerson}" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="#{videoGameBean.deletePerson}::#showAdminResult.xhtml"
+    NAME="output1" PATH="/showAdminResult.xhtml"
+    TARGET="rules:#showAdminResult.xhtml"
+    TITLE="#{videoGameBean.deletePerson}" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#addPerson.xhtml" PATH="/addPerson.xhtml"
+  SHAPE="816,744,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#addPerson.xhtml:0" NAME="item"
+   PATH="/addPerson.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="#{videoGameBean.addPerson}::#showAdminResult.xhtml"
+    NAME="output" PATH="/showAdminResult.xhtml"
+    TARGET="rules:#showAdminResult.xhtml"
+    TITLE="#{videoGameBean.addPerson}" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#addCategory.xhtml" PATH="/addCategory.xhtml"
+  SHAPE="816,952,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#addCategory.xhtml:0" NAME="item"
+   PATH="/addCategory.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="#{videoGameBean.addCategory}::#showAdminResult.xhtml"
+    NAME="output" PATH="/showAdminResult.xhtml"
+    TARGET="rules:#showAdminResult.xhtml"
+    TITLE="#{videoGameBean.addCategory}" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#manageCategory.xhtml"
+  PATH="/manageCategory.xhtml" SHAPE="816,856,50,57" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#manageCategory.xhtml:0" NAME="item"
+   PATH="/manageCategory.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="#{videoGameBean.modifyCategory}::#showAdminResult.xhtml"
+    NAME="output" PATH="/showAdminResult.xhtml"
+    TARGET="rules:#showAdminResult.xhtml"
+    TITLE="#{videoGameBean.modifyCategory}" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="#{videoGameBean.deleteCategory}::#showAdminResult.xhtml"
+    NAME="output1" PATH="/showAdminResult.xhtml"
+    TARGET="rules:#showAdminResult.xhtml"
+    TITLE="#{videoGameBean.deleteCategory}" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#manageCategoryOverview.xhtml"
+  PATH="/manageCategoryOverview.xhtml" SHAPE="544,896,50,57" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#manageCategoryOverview.xhtml:0" NAME="item"
+   PATH="/manageCategoryOverview.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="manageCategory::#manageCategory.xhtml"
+    NAME="output" PATH="/manageCategory.xhtml"
+    TARGET="rules:#manageCategory.xhtml" TITLE="manageCategory" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="addCategory::#addCategory.xhtml"
+    NAME="output1" PATH="/addCategory.xhtml"
+    TARGET="rules:#addCategory.xhtml" TITLE="addCategory" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
  </PROCESS-ITEM>
 </PROCESS>

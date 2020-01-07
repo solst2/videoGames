@@ -51,7 +51,8 @@ public class Developer extends Person{
 	
 	@Override
 	public String toString() {
-		return "Developer [id=" + super.getId() + ",mail=" + mail + "]";
+		return "Developer [id=" + super.getId() + ",firstname=" + super.getFristname() 
+		+",Lastname=" + super.getLastname() +",mail=" + mail + "]";
 	}
 
 	public void removeGame(Game g) {

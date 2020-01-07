@@ -21,17 +21,21 @@
 			<br></br>
 			<h:inputText value="#{videoGameBean.lastname}" />
 			<br></br>
-			<h:outputLabel value="Email" rendered="#{not videoGameBean.isaClient}"></h:outputLabel>
-			<br rendered="#{not videoGameBean.isaClient}"></br>
-			<h:inputText value="#{videoGameBean.developerEmail}" rendered="#{not videoGameBean.isaClient}"/>
+			<h:panelGroup rendered="#{not videoGameBean.isaClient}">
+			<h:outputLabel value="Email"></h:outputLabel>
+			<br ></br>
+			<h:inputText value="#{videoGameBean.developerEmail}"/>
 			<br></br>
-			<h:outputLabel value="Description" rendered="#{videoGameBean.isaClient}"></h:outputLabel>
+			</h:panelGroup>
+			<h:panelGroup rendered="#{videoGameBean.isaClient}">
+			<h:outputLabel value="Description"></h:outputLabel>
 			<br></br>
-			<h:inputText value="#{videoGameBean.clientDescription}" rendered="#{videoGameBean.isaClient}"/>
+			<h:inputText value="#{videoGameBean.clientDescription}"/>
 			<br></br>
-			<h:outputLabel value="Age" rendered="#{videoGameBean.isaClient}"></h:outputLabel>
+			<h:outputLabel value="Year of Birth"></h:outputLabel>
 			<br></br>
-			<h:inputText value="#{videoGameBean.clientAge}" rendered="#{videoGameBean.isaClient}"/>
+			<h:inputText value="#{videoGameBean.clientyearOfBirth}"/>
+			</h:panelGroup>
 			<br></br>
 			<br></br>
 			<h:commandButton value="add ->"

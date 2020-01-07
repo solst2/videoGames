@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Table(name="Client")
 public class Client extends Person{
 	private String description;
-	private int age;
+	private int yearOfBirth;
 	@OneToMany(mappedBy="client")
 	private Set<Game> games;
 	
@@ -29,16 +29,16 @@ public class Client extends Person{
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public int getAge() {
-		return age;
+	public int getYearOfBirth() {
+		return yearOfBirth;
 	}
-	public void setAge(int age) {
-		this.age = age;
+	public void setYearOfBirth(int yearOfBirth) {
+		this.yearOfBirth = yearOfBirth;
 	}
-	public Client(String firstname, String lastname, String description, int age) {
+	public Client(String firstname, String lastname, String description, int yearOfBirth) {
 		super(firstname, lastname);
 		this.description = description;
-		this.age = age;
+		this.yearOfBirth = yearOfBirth;
 		this.games = new HashSet<Game>();
 	}
 	public Client() {
@@ -59,7 +59,7 @@ public class Client extends Person{
 	}
 	@Override
 	public String toString() {
-		return super.toString() + "Client [description=" + description + ", age=" + age;
+		return super.toString() + "Client [description=" + description + ", year of birth=" + yearOfBirth;
 	}
 	
 }

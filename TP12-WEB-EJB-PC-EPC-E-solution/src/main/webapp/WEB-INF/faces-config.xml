@@ -29,6 +29,10 @@
    <from-outcome>giveBackGame</from-outcome>
    <to-view-id>/giveBackGame.xhtml</to-view-id>
   </navigation-case>
+  <navigation-case>
+   <from-outcome>#{videoGameBean.showGameDetails}</from-outcome>
+   <to-view-id>/detailsGame.xhtml</to-view-id>
+  </navigation-case>
  </navigation-rule>
  <navigation-rule>
   <display-name>rentGame.xhtml</display-name>
@@ -36,6 +40,10 @@
   <navigation-case>
    <from-outcome>#{videoGameBean.rentTheGame}</from-outcome>
    <to-view-id>/showClientResult.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>#{videoGameBean.showGameDetails}</from-outcome>
+   <to-view-id>/detailsGame.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
@@ -60,6 +68,10 @@
   <navigation-case>
    <from-outcome>#{videoGameBean.managedPersonsView}</from-outcome>
    <to-view-id>/managePersonOverview.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>manageCategoryOverview</from-outcome>
+   <to-view-id>/manageCategoryOverview.xhtml</to-view-id>
   </navigation-case>
  </navigation-rule>
  <navigation-rule>
@@ -108,10 +120,62 @@
    <from-outcome>managePerson</from-outcome>
    <to-view-id>/managePerson.xhtml</to-view-id>
   </navigation-case>
+  <navigation-case>
+   <from-outcome>addPerson</from-outcome>
+   <to-view-id>/addPerson.xhtml</to-view-id>
+  </navigation-case>
  </navigation-rule>
  <navigation-rule>
   <display-name>managePerson.xhtml</display-name>
   <from-view-id>/managePerson.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>#{videoGameBean.modifyPerson}</from-outcome>
+   <to-view-id>/showAdminResult.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>#{videoGameBean.deletePerson}</from-outcome>
+   <to-view-id>/showAdminResult.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <display-name>addPerson.xhtml</display-name>
+  <from-view-id>/addPerson.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>#{videoGameBean.addPerson}</from-outcome>
+   <to-view-id>/showAdminResult.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <display-name>addCategory.xhtml</display-name>
+  <from-view-id>/addCategory.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>#{videoGameBean.addCategory}</from-outcome>
+   <to-view-id>/showAdminResult.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <display-name>manageCategory.xhtml</display-name>
+  <from-view-id>/manageCategory.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>#{videoGameBean.modifyCategory}</from-outcome>
+   <to-view-id>/showAdminResult.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>#{videoGameBean.deleteCategory}</from-outcome>
+   <to-view-id>/showAdminResult.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <display-name>manageCategoryOverview.xhtml</display-name>
+  <from-view-id>/manageCategoryOverview.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>manageCategory</from-outcome>
+   <to-view-id>/manageCategory.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>addCategory</from-outcome>
+   <to-view-id>/addCategory.xhtml</to-view-id>
+  </navigation-case>
  </navigation-rule>
  <application/>
 </faces-config>

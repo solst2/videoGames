@@ -24,18 +24,22 @@
 			<br></br>
 			<h:inputText value="#{videoGameBean.personSelected.lastname}" />
 			<br></br>
-			<h:outputLabel value="email" rendered="#{not videoGameBean.isaClient}"></h:outputLabel>
+			<h:panelGroup rendered="#{not videoGameBean.isaClient}">
+			<h:outputLabel value="email"></h:outputLabel>
 			<br></br>
-			<h:inputText value="#{videoGameBean.personSelected.mail}" rendered="#{not videoGameBean.isaClient}"/>
+			<h:inputText value="#{videoGameBean.personSelected.mail}" />
 			<br></br>
-			<h:outputLabel value="description" rendered="#{videoGameBean.isaClient}"></h:outputLabel>
+			</h:panelGroup>
+			<h:panelGroup rendered="#{videoGameBean.isaClient}">
+			<h:outputLabel value="description" ></h:outputLabel>
 			<br></br>
-			<h:inputText value="#{videoGameBean.personSelected.description}" rendered="#{videoGameBean.isaClient}"/>
+			<h:inputText value="#{videoGameBean.personSelected.description}"/>
 			<br></br>
-			<h:outputLabel value="age" rendered="#{videoGameBean.isaClient}"></h:outputLabel>
+			<h:outputLabel value="year of birth"></h:outputLabel>
 			<br></br>
-			<h:inputText value="#{videoGameBean.personSelected.age}" rendered="#{videoGameBean.isaClient}"/>
+			<h:inputText value="#{videoGameBean.personSelected.yearOfBirth}"/>
 			<br></br>
+			</h:panelGroup>
 			<br></br>
 			<h:commandButton value="safe the modifications ->"
 				action="#{videoGameBean.modifyPerson}">

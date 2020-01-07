@@ -1,6 +1,7 @@
 package ch.hevs.managedbeans;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -32,9 +33,11 @@ public class VideoGameBean {
 	private List<Client> allClientObjects;
 	//welcome Page
 	private String clientName;
+	private Client clientObject;
 	private List<String> clientNames;
 	//overview
 	private List<Game> ownGames;
+	private String pageBeforeDetails;
 	//confirmation
 	private String resultString;
 
@@ -68,6 +71,7 @@ public class VideoGameBean {
 	
 	//Client
 	private int clientAge;
+	private int clientyearOfBirth;
 	private String clientDescription;
 	
 	//Developers
@@ -89,14 +93,6 @@ public class VideoGameBean {
 		videoGameRental = (VideoGames) ctx
 				.lookup("java:global/TP12-WEB-EJB-PC-EPC-E-0.0.1-SNAPSHOT/VideoGamesBean!ch.hevs.service.VideoGames");
 		
-		// get clients with format id firstname lastname
-		List<Client> clients = videoGameRental.getAllClients();
-		System.out.println("-----------the client size"+clients.size());
-		this.clientNames = new ArrayList<String>();
-		for (Client c : clients) {
-			this.clientNames.add(c.getId() + " " + c.getFristname() + " " + c.getLastname());
-		}
-
 		this.ownGames = new ArrayList<Game>();
 		allGames = new HashMap<String, Long>();
 		allGameObjects = videoGameRental.getAllGames();
@@ -110,8 +106,36 @@ public class VideoGameBean {
 		isAdmin=videoGameRental.isAdmin();
 	}
 	
+	
 	//Getter und Setter
 
+	public Client getClientObject() {
+		return clientObject;
+	}
+
+	public String getPageBeforeDetails() {
+		return pageBeforeDetails;
+	}
+
+
+	public void setPageBeforeDetails(String pageBeforeDetails) {
+		this.pageBeforeDetails = pageBeforeDetails;
+	}
+
+
+	public void setClientObject(Client clientObject) {
+		this.clientObject = clientObject;
+	}
+
+	public int getClientyearOfBirth() {
+		clientyearOfBirth = 0;
+		return clientyearOfBirth;
+	}
+
+	public void setClientyearOfBirth(int clientyearOfBirth) {
+		this.clientyearOfBirth = clientyearOfBirth;
+	}
+	
 	public String getResultString() {
 		return resultString;
 	}
@@ -130,6 +154,7 @@ public class VideoGameBean {
 	}
 
 	public String getNewGameName() {
+		newGameName = "";
 		return newGameName;
 	}
 
@@ -140,6 +165,7 @@ public class VideoGameBean {
 
 
 	public String getNewGameDifficultyLevel() {
+		newGameDifficultyLevel = "";
 		return newGameDifficultyLevel;
 	}
 
@@ -150,6 +176,7 @@ public class VideoGameBean {
 
 
 	public int getNewGameAgeLimit() {
+		newGameAgeLimit = 0;
 		return newGameAgeLimit;
 	}
 
@@ -321,7 +348,8 @@ public class VideoGameBean {
 	      
 		while(itr.hasNext()) {
 			Game g = itr.next();
-			if (g.getClient()!=null) {
+			//if it is already rent or the minimum age is not
+			if (g.getClient()!=null||clientAge<g.getAgeLimit()) {
 				itr.remove();
 		    }
 	    }
@@ -355,9 +383,7 @@ public class VideoGameBean {
 	}
 	
 	public void updateOwnGames(){
-		String[] split = clientName.split(" ");
-		Long id = Long.parseLong(split[0]);
-		ownGames = videoGameRental.getGamesFromClient(id);
+		ownGames = videoGameRental.getGamesFromClient(clientObject.getId());
 	}
 
 	public void setOwnGames(List<Game> ownGames) {
@@ -369,10 +395,27 @@ public class VideoGameBean {
 	}
 
 	public void setClientName(String clientName) {
+		if (clientName == null) {
+			return;
+		}
+		String[] split = clientName.split(" ");
+		Long id = Long.parseLong(split[0]);
+		//get Object
+		clientObject = videoGameRental.getClient(id);
+		//set age
+		clientAge = Calendar.getInstance().get(Calendar.YEAR) - clientObject.getYearOfBirth();
+		System.out.println("Age of the client: "+clientAge);
 		this.clientName = clientName;
 	}
 
 	public List<String> getClientNames() {
+		// get clients with format id firstname lastname
+		List<Client> clients = videoGameRental.getAllClients();
+		System.out.println("-----------the client size"+clients.size());
+		this.clientNames = new ArrayList<String>();
+		for (Client c : clients) {
+			this.clientNames.add(c.getId() + " " + c.getFristname() + " " + c.getLastname());
+		}
 		return clientNames;
 	}
 
@@ -410,7 +453,8 @@ public class VideoGameBean {
 	}
 	
 	//Categories
-		public String getCategoryName() {
+	public String getCategoryName() {
+		categoryName = "";
 		return categoryName;
 	}
 
@@ -419,6 +463,7 @@ public class VideoGameBean {
 	}
 
 	public String getCategoryDescription() {
+		categoryDescription = "";
 		return categoryDescription;
 	}
 
@@ -480,6 +525,7 @@ public class VideoGameBean {
 
 	//Developers
 	public String getFirstname() {
+		firstname = "";
 		return firstname;
 	}
 
@@ -488,6 +534,7 @@ public class VideoGameBean {
 	}
 
 	public String getLastname() {
+		lastname = "";
 		return lastname;
 	}
 
@@ -496,6 +543,7 @@ public class VideoGameBean {
 	}
 
 	public String getDeveloperEmail() {
+		developerEmail = "";
 		return developerEmail;
 	}
 
@@ -512,6 +560,7 @@ public class VideoGameBean {
 	}
 
 	public String getClientDescription() {
+		clientDescription = "";
 		return clientDescription;
 	}
 
@@ -520,10 +569,8 @@ public class VideoGameBean {
 	}
 
 	public String rentTheGame() {
-		String[] split = clientName.split(" ");
-		Client client = videoGameRental.getClient(Long.parseLong(split[0]));
-		System.out.println("##rentTheGame###" + client.getLastname() + gameSelected.getName());
-		videoGameRental.rent(client, gameSelected);
+		System.out.println("##rentTheGame###" + clientObject.getLastname() + gameSelected.getName());
+		videoGameRental.rent(clientObject, gameSelected);
 		updateOwnGames();
 		this.resultString = "You have rented the game: "+gameSelected.getName();
 		return "showClientResult";
@@ -531,13 +578,7 @@ public class VideoGameBean {
 	
 	public String giveGameBack() {
 		System.out.println("##giveGameBack###");
-		String[] split = clientName.split(" ");
-		Client client = videoGameRental.getClient(Long.parseLong(split[0]));
-		
-		/*Long gameId = allGames.get(gameToRent);
-		Game back = videoGameRental.getGame(gameId);*/
-		System.out.println(client.getFristname()+" "+gamebackObject.getName() + " " + client.getGames());
-		videoGameRental.giveBack(client, gamebackObject);
+		videoGameRental.giveBack(clientObject, gamebackObject);
 		updateOwnGames();
 		this.resultString = "You gave back the game: "+gamebackObject.getName();
 		return "showClientResult";
@@ -594,7 +635,7 @@ public class VideoGameBean {
 			this.resultString = "The developer is added: "+developer.getFristname() + " " + developer.getLastname();
 		}
 		if(isaClient) {
-			Client client = new Client(firstname, lastname, clientDescription, clientAge);
+			Client client = new Client(firstname, lastname, clientDescription, clientyearOfBirth);
 			videoGameRental.insertClient(client);
 			updateClient();
 			this.resultString = "The client is added: "+client.getFristname() + " " + client.getLastname();
@@ -625,6 +666,15 @@ public class VideoGameBean {
 			this.resultString = "The client is deleted: "+personSelected.getFristname() + " " + personSelected.getLastname();
 		}
 		return "showAdminResult";
+	}
+	
+	public String showGameDetails(String page) {
+		pageBeforeDetails = page;
+		return "detailsGame";
+	}
+	
+	public String returnGameDetails () {
+		return pageBeforeDetails;
 	}
 
 }
