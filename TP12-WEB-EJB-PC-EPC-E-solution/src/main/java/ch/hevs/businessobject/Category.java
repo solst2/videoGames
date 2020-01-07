@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,6 +24,20 @@ public class Category {
 	private String description;
 	@OneToMany(mappedBy="category", cascade = CascadeType.REMOVE)
 	private Set<Game> games;
+	/*@Embedded
+	private Rating rating;*/
+	
+	public Category() {
+		super();
+		this.games = new HashSet<Game>();
+	}
+	
+	public Category(String name, String description, int ratingNumber) {
+		this.name = name;
+		this.description = description;
+		//this.rating = new Rating(ratingNumber);
+		this.games = new HashSet<Game>();
+	}
 	
 	public Set<Game> getGames() {
 		return games;
@@ -48,14 +63,14 @@ public class Category {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Category(String name, String description) {
-		this.name = name;
-		this.description = description;
-		this.games = new HashSet<Game>();
+	
+	/*public int getRatingNumber() {
+		return rating.getRatingNumber();
 	}
-	public Category() {
-		this.games = new HashSet<Game>();
-	}
+	public void setRatingNumber(int ratingNumber) {
+		rating.setRatingNumber(ratingNumber);
+	}*/
+	
 	//helper Methode
 	public void addGame(Game g) {
 		games.add(g);

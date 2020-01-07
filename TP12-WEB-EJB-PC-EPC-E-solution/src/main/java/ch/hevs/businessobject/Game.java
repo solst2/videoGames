@@ -15,7 +15,7 @@ public class Game {
 	private String name;
 	private String difficultyLevel;
 	private int ageLimit;
-	@ManyToOne
+	@ManyToOne (cascade = CascadeType.MERGE)
 	@JoinColumn(nullable = false)
 	private Developer developer;
 	@Override
@@ -24,7 +24,7 @@ public class Game {
 	}
 	@ManyToOne
 	private Category category;
-	@ManyToOne
+	@ManyToOne (cascade = CascadeType.MERGE)
 	private Client client;
 	
 	

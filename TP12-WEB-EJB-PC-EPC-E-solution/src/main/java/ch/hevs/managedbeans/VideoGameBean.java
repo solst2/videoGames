@@ -16,6 +16,8 @@ import ch.hevs.businessobject.Category;
 import ch.hevs.businessobject.Client;
 import ch.hevs.businessobject.Developer;
 import ch.hevs.businessobject.Game;
+import ch.hevs.businessobject.Person;
+import ch.hevs.businessobject.Rating;
 import ch.hevs.service.VideoGames;
 
 public class VideoGameBean {
@@ -25,6 +27,7 @@ public class VideoGameBean {
 	private List<Game> allGameObjects;
 	private List<Category> allCategoryObjects;
 	private List<Developer> allDeveloperObjects;
+	private List<Client> allClientObjects;
 	//welcome Page
 	private String clientName;
 	private List<String> clientNames;
@@ -57,17 +60,26 @@ public class VideoGameBean {
 	private Developer newGameDeveloper;
 	private String newGameDeveloperString;
 	
+	//Person
+	private String firstname;
+	private String lastname;
+	
+	//Client
+	private int clientAge;
+	private String clientDescription;
+	
 	//Developers
-	private String developerFirstname;
-	private String developerLastname;
 	private String developerEmail;
-	private Developer developerSelected;
 	
 	//Categories
 	private String categoryName;
 	private String categoryDescription;
+	private int categoryRating;
 	private Category categorySelected;
 	
+	private Boolean isaClient;
+	private Person personSelected;
+
 	@PostConstruct
 	public void initialize() throws NamingException {
 		InitialContext ctx = new InitialContext();
@@ -88,6 +100,8 @@ public class VideoGameBean {
 		for(Game g : allGameObjects) {
 			allGames.put(g.getName(),g.getId());
 		}
+		
+		allClientObjects = videoGameRental.getAllClients();
 	}
 	
 	//Getter und Setter
@@ -406,21 +420,65 @@ public class VideoGameBean {
 		this.categorySelected = categorySelected;
 	}
 
+	public int getCategoryRating() {
+		return categoryRating;
+	}
+
+	public void setCategoryRating(int categoryRating) {
+		this.categoryRating = categoryRating;
+	}
+	
+	//Person
+	
+	public String managedPersonsView(String view) {
+		if(view.equals("client")) {
+			isaClient = true;
+		}
+		if(view.equals("developer")) {
+			isaClient = false;
+		}
+		return "managePersonOverview";
+	}
+	
+	public List<Client> getAllClientObjects() {
+		return allClientObjects;
+	}
+
+	public void setAllClientObjects(List<Client> allClientObjects) {
+		this.allClientObjects = allClientObjects;
+	}
+
+	public Boolean getIsaClient() {
+		return isaClient;
+	}
+
+	public void setIsaClient(Boolean isaClient) {
+		this.isaClient = isaClient;
+	}
+
+	public Person getPersonSelected() {
+		return personSelected;
+	}
+
+	public void setPersonSelected(Person personSelected) {
+		this.personSelected = personSelected;
+	}
+
 	//Developers
-	public String getDeveloperFirstname() {
-		return developerFirstname;
+	public String getFirstname() {
+		return firstname;
 	}
 
-	public void setDeveloperFirstname(String developerFirstname) {
-		this.developerFirstname = developerFirstname;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
-	public String getDeveloperLastname() {
-		return developerLastname;
+	public String getLastname() {
+		return lastname;
 	}
 
-	public void setDeveloperLastname(String developerLastname) {
-		this.developerLastname = developerLastname;
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 
 	public String getDeveloperEmail() {
@@ -431,12 +489,20 @@ public class VideoGameBean {
 		this.developerEmail = developerEmail;
 	}
 
-	public Developer getDeveloperSelected() {
-		return developerSelected;
+	public int getClientAge() {
+		return clientAge;
 	}
 
-	public void setDeveloperSelected(Developer developerSelected) {
-		this.developerSelected = developerSelected;
+	public void setClientAge(int clientAge) {
+		this.clientAge = clientAge;
+	}
+
+	public String getClientDescription() {
+		return clientDescription;
+	}
+
+	public void setClientDescription(String clientDescription) {
+		this.clientDescription = clientDescription;
 	}
 
 	public String rentTheGame() {
@@ -463,18 +529,6 @@ public class VideoGameBean {
 		return "showClientResult";
 	}
 	
-	public void updateIdGameEdit(ValueChangeEvent event) {
-		gameSelected = videoGameRental.getGame((Long)event.getNewValue());
-	}
-	
-	public void updateIdDeveloperEdit(ValueChangeEvent event) {
-		developerSelected = videoGameRental.getDeveloper((Long)event.getNewValue());
-	}
-	
-	public void updateIdCategoryEdit(ValueChangeEvent event) {
-		categorySelected = videoGameRental.getCategory((Long)event.getNewValue());
-	}
-	
 	public String addGame () {
 		Game game = new Game(newGameName, newGameDifficultyLevel, newGameAgeLimit);
 		videoGameRental.insertGame(game, newGameCategory, newGameDeveloper);
@@ -496,7 +550,7 @@ public class VideoGameBean {
 	
 	//Category
 	public String addCategory () {
-		Category category = new Category(categoryName, categoryDescription);
+		Category category = new Category(categoryName, categoryDescription, categoryRating);
 		videoGameRental.insertCategory(category);
 		this.resultString = "The category is added: "+category.getName();
 		return "showAdminResult";
@@ -514,23 +568,48 @@ public class VideoGameBean {
 		return "showAdminResult";
 	}
 	
-	//Developer
-	public String addDeveloper () {
-		Developer developer = new Developer(developerFirstname, developerLastname, developerEmail);
-		videoGameRental.insertDeveloper(developer);
-		this.resultString = "The developer is added: "+developer.getFristname() + " " + developer.getLastname();
+	public void updateClient() {
+		allClientObjects = videoGameRental.getAllClients();
+	}
+	
+	//Person
+	public String addPerson () {
+		if(!isaClient) {
+			Developer developer = new Developer(firstname, lastname, developerEmail);
+			videoGameRental.insertDeveloper(developer);
+			this.resultString = "The developer is added: "+developer.getFristname() + " " + developer.getLastname();
+		}
+		if(isaClient) {
+			Client client = new Client(firstname, lastname, clientDescription, clientAge);
+			videoGameRental.insertClient(client);
+			updateClient();
+			this.resultString = "The client is added: "+client.getFristname() + " " + client.getLastname();
+		}
 		return "showAdminResult";
 	}
 	
-	public String modifyDeveloper () {
-		this.resultString = "The developer is added: "+developerSelected.getFristname() + " " + developerSelected.getLastname();
-		videoGameRental.updateDeveloper(developerSelected);
+	public String modifyPerson () {
+		if(!isaClient) {
+			videoGameRental.updateDeveloper((Developer)personSelected);
+			this.resultString = "The developer is deleted: "+personSelected.getFristname() + " " + personSelected.getLastname();
+		}
+		if(isaClient) {
+			videoGameRental.updateClient((Client)personSelected);
+			this.resultString = "The client is deleted: "+personSelected.getFristname() + " " + personSelected.getLastname();
+		}
 		return "showAdminResult";
 	}
 	
-	public String deleteDeveloper () {
-		videoGameRental.deleteDeveloper(developerSelected);
-		this.resultString = "The developer is deleted: "+developerSelected.getFristname() + " " + developerSelected.getLastname();
+	public String deletePerson () {
+		if(!isaClient) {
+			videoGameRental.deleteDeveloper((Developer)personSelected);
+			this.resultString = "The developer is deleted: "+personSelected.getFristname() + " " + personSelected.getLastname();
+		}
+		if(isaClient) {
+			videoGameRental.deleteClient((Client)personSelected);
+			updateClient();
+			this.resultString = "The client is deleted: "+personSelected.getFristname() + " " + personSelected.getLastname();
+		}
 		return "showAdminResult";
 	}
 

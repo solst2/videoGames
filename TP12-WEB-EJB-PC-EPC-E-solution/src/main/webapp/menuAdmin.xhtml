@@ -16,13 +16,16 @@
 			<h:commandButton value="manage games" action="manageGameOverview"></h:commandButton>
 			<br></br>
 			<br></br>
-			<h:commandButton value="manage clients" action="manageClientOverview"></h:commandButton>
+			<h:commandButton value="manage clients" action="#{videoGameBean.managedPersonsView('client')}"></h:commandButton>
 			<br></br>
 			<br></br>
-			<h:commandButton value="manage developers" action="manageDeveloperOverview"></h:commandButton>
+			<h:commandButton value="manage developers" action="#{videoGameBean.managedPersonsView('developer')}"></h:commandButton>
 			<br></br>
 			<br></br>
 			<h:commandButton value="manage categories" action="manageCategoryOverview"></h:commandButton>
+			<br></br>
+			<br></br>
+			<h:commandButton value="home" action="welcomeVideoGames"></h:commandButton>
 		</h:form>
 	</ui:define>
 </ui:composition>

@@ -122,11 +122,8 @@ public class VideoGamesBean implements VideoGames{
 
 	@Override
 	public void deleteClient(Client c) {
-		for(Game g : c.getGames()) {
-			g.setClient(null);
-			em.persist(g);
-		}
-		em.remove(c);
+		Client client = em.merge(c);
+		em.remove(client);
 	}
 
 	@Override

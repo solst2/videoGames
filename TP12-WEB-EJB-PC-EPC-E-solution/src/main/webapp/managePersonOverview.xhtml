@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+	<ui:define name="content">
+		<h:form>
+			<br></br>
+			<h:outputLabel value="Overview of developers: " rendered="#{not videoGameBean.isaClient}"></h:outputLabel>
+			<h:outputLabel value="Overview of clients: " rendered="#{videoGameBean.isaClient}"></h:outputLabel>
+			<br></br>
+			<h:form rendered="#{not videoGameBean.isaClient}">
+				<h:dataTable value="#{videoGameBean.allDeveloperObjects}" var="developers">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="ID"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{developers.id}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Firstname"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{developers.fristname}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Lastname"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{developers.lastname}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Email"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{developers.mail}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value=""></h:outputText>
+						</f:facet>
+						<h:commandButton value="manage Developer"
+							action="managePerson">
+							<f:setPropertyActionListener
+								target="#{videoGameBean.personSelected}" value="#{developers}" />
+						</h:commandButton>
+					</h:column>
+				</h:dataTable>
+			<br></br>
+			<br></br>
+			<h:commandButton value="add developer" action="addPerson"></h:commandButton>
+			<br></br>
+			</h:form>
+			
+			<h:form rendered="#{videoGameBean.isaClient}">
+				<h:dataTable value="#{videoGameBean.allClientObjects}" var="clients">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="ID"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{clients.id}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Firstname"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{clients.fristname}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Lastname"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{clients.lastname}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Description"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{clients.description}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Age"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{clients.age}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value=""></h:outputText>
+						</f:facet>
+						<h:commandButton value="manage Client"
+							action="managePerson">
+							<f:setPropertyActionListener
+								target="#{videoGameBean.personSelected}" value="#{clients}" />
+						</h:commandButton>
+					</h:column>
+				</h:dataTable>
+			<br></br>
+			<br></br>
+			<h:commandButton value="add client" action="addPerson"></h:commandButton>
+			<br></br>
+			</h:form>
+			<br></br>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

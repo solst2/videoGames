@@ -57,6 +57,10 @@
    <from-outcome>manageGameOverview</from-outcome>
    <to-view-id>/manageGameOverview.xhtml</to-view-id>
   </navigation-case>
+  <navigation-case>
+   <from-outcome>#{videoGameBean.managedPersonsView}</from-outcome>
+   <to-view-id>/managePersonOverview.xhtml</to-view-id>
+  </navigation-case>
  </navigation-rule>
  <navigation-rule>
   <display-name>showAdminResult.xhtml</display-name>
@@ -96,6 +100,18 @@
    <from-outcome>addGame</from-outcome>
    <to-view-id>/addGame.xhtml</to-view-id>
   </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <display-name>managePersonOverview.xhtml</display-name>
+  <from-view-id>/managePersonOverview.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>managePerson</from-outcome>
+   <to-view-id>/managePerson.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <display-name>managePerson.xhtml</display-name>
+  <from-view-id>/managePerson.xhtml</from-view-id>
  </navigation-rule>
  <application/>
 </faces-config>

@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+	<ui:define name="content">
+		<br></br>
+		<h:form>
+			<br></br>
+			<br></br>
+			<h:outputLabel value="Developer informations" rendered="#{not videoGameBean.isaClient}"></h:outputLabel>
+			<h:outputLabel value="Client informations" rendered="#{videoGameBean.isaClient}"></h:outputLabel>
+			<br></br>
+			<br></br>
+			<h:outputLabel value="Firstname"></h:outputLabel>
+			<br></br>
+			<h:inputText value="#{videoGameBean.personSelected.fristname}" />
+			<br></br>
+			<h:outputLabel value="Lastname"></h:outputLabel>
+			<br></br>
+			<h:inputText value="#{videoGameBean.personSelected.lastname}" />
+			<br></br>
+			<h:outputLabel value="email" rendered="#{not videoGameBean.isaClient}"></h:outputLabel>
+			<br></br>
+			<h:inputText value="#{videoGameBean.personSelected.mail}" rendered="#{not videoGameBean.isaClient}"/>
+			<br></br>
+			<h:outputLabel value="description" rendered="#{videoGameBean.isaClient}"></h:outputLabel>
+			<br></br>
+			<h:inputText value="#{videoGameBean.personSelected.description}" rendered="#{videoGameBean.isaClient}"/>
+			<br></br>
+			<h:outputLabel value="age" rendered="#{videoGameBean.isaClient}"></h:outputLabel>
+			<br></br>
+			<h:inputText value="#{videoGameBean.personSelected.age}" rendered="#{videoGameBean.isaClient}"/>
+			<br></br>
+			<br></br>
+			<h:commandButton value="safe the modifications ->"
+				action="#{videoGameBean.modifyPerson}">
+			</h:commandButton>
+			<br></br>
+			<br></br>
+			<h:commandButton value="delete ->"
+				action="#{videoGameBean.deletePerson}">
+			</h:commandButton>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

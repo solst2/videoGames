@@ -47,6 +47,11 @@
     ID="manageGameOverview::#manageGameOverview.xhtml" NAME="output"
     PATH="/manageGameOverview.xhtml"
     TARGET="rules:#manageGameOverview.xhtml" TITLE="manageGameOverview" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="#{videoGameBean.managedPersonsView}::#managePersonOverview.xhtml"
+    NAME="output1" PATH="/managePersonOverview.xhtml"
+    TARGET="rules:#managePersonOverview.xhtml"
+    TITLE="#{videoGameBean.managedPersonsView}" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#manageGameOverview.xhtml"
@@ -107,5 +112,19 @@
     PATH="/showAdminResult.xhtml" TARGET="rules:#showAdminResult.xhtml"
     TITLE="#{videoGameBean.addGame}" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#managePersonOverview.xhtml"
+  PATH="/managePersonOverview.xhtml" SHAPE="240,545,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#managePersonOverview.xhtml:0" NAME="item"
+   PATH="/managePersonOverview.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="managePerson::#managePerson.xhtml"
+    NAME="output" PATH="/managePerson.xhtml"
+    TARGET="rules:#managePerson.xhtml" TITLE="managePerson" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#managePerson.xhtml"
+  PATH="/managePerson.xhtml" SHAPE="552,544,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#managePerson.xhtml:0" NAME="item"
+   PATH="/managePerson.xhtml" model-entity="JSFProcessItem"/>
  </PROCESS-ITEM>
 </PROCESS>
