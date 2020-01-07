@@ -12,8 +12,8 @@
 		<h:form>
 			<br></br>
 			<br></br>
-			<h:outputLabel value="Developer informations" rendered="#{not videoGameBean.isaClient}"></h:outputLabel>
-			<h:outputLabel value="Client informations" rendered="#{videoGameBean.isaClient}"></h:outputLabel>
+			<h:outputLabel style="font-size:30px;" value="Developer informations" rendered="#{not videoGameBean.isaClient}"></h:outputLabel>
+			<h:outputLabel style="font-size:30px;" value="Client informations" rendered="#{videoGameBean.isaClient}"></h:outputLabel>
 			<br></br>
 			<br></br>
 			<h:outputLabel value="Firstname"></h:outputLabel>
@@ -31,7 +31,7 @@
 			<br></br>
 			</h:panelGroup>
 			<h:panelGroup rendered="#{videoGameBean.isaClient}">
-			<h:outputLabel value="description" ></h:outputLabel>
+			<h:outputLabel  value="description" ></h:outputLabel>
 			<br></br>
 			<h:inputText value="#{videoGameBean.personSelected.description}"/>
 			<br></br>

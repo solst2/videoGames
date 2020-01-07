@@ -10,8 +10,8 @@
 	<ui:define name="content">
 		<h:form>
 			<br></br>
-			<h:outputLabel value="Overview of developers: " rendered="#{not videoGameBean.isaClient}"></h:outputLabel>
-			<h:outputLabel value="Overview of clients: " rendered="#{videoGameBean.isaClient}"></h:outputLabel>
+			<h:outputLabel style="font-size:30px;" value="Overview of developers: " rendered="#{not videoGameBean.isaClient}"></h:outputLabel>
+			<h:outputLabel style="font-size:30px;" value="Overview of clients: " rendered="#{videoGameBean.isaClient}"></h:outputLabel>
 			<br></br>
 			<h:form rendered="#{not videoGameBean.isaClient}">
 				<h:dataTable value="#{videoGameBean.allDeveloperObjects}" var="developers">
