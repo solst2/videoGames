@@ -1,6 +1,9 @@
 package ch.hevs.service;
 
 import java.util.List;
+
+import javax.annotation.Resource;
+import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,6 +17,14 @@ public class VideoGamesBean implements VideoGames{
 	
 	@PersistenceContext(name = "videoGames")
 	private EntityManager em;
+
+	@Resource 
+	private SessionContext ctx;
+	
+	@Override
+	public boolean isAdmin() {
+		return ctx.isCallerInRole("Admin");
+	}
 	
 	//Methods fot the Clients
 	@Override

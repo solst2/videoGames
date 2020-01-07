@@ -22,7 +22,7 @@
 		<br></br>
 		<br></br>
 		<br></br>
-        <h:commandLink action="menuAdmin">
+        <h:commandLink action="menuAdmin" rendered="#{videoGameBean.isAdmin}">
          <h:outputText value="Admin ->" />
         </h:commandLink>
         </h:form>

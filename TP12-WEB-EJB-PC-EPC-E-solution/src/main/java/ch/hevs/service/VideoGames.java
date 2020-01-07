@@ -12,6 +12,8 @@ public interface VideoGames {
 	
 	List<Client> getAllClients();
 	
+	boolean isAdmin();
+	
 	void insertClient(Client c);
 	
 	void updateClient(Client c);

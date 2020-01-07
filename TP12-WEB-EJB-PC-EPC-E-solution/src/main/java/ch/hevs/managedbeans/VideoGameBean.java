@@ -6,6 +6,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+import javax.ejb.EJBContext;
+import javax.ejb.SessionContext;
 import javax.faces.application.ViewHandler;
 import javax.faces.component.UIViewRoot;
 import javax.faces.event.ValueChangeEvent;
@@ -17,7 +20,6 @@ import ch.hevs.businessobject.Client;
 import ch.hevs.businessobject.Developer;
 import ch.hevs.businessobject.Game;
 import ch.hevs.businessobject.Person;
-import ch.hevs.businessobject.Rating;
 import ch.hevs.service.VideoGames;
 
 public class VideoGameBean {
@@ -79,6 +81,7 @@ public class VideoGameBean {
 	
 	private Boolean isaClient;
 	private Person personSelected;
+	private Boolean isAdmin;
 
 	@PostConstruct
 	public void initialize() throws NamingException {
@@ -102,6 +105,9 @@ public class VideoGameBean {
 		}
 		
 		allClientObjects = videoGameRental.getAllClients();
+		
+		// is the user a admin
+		isAdmin=videoGameRental.isAdmin();
 	}
 	
 	//Getter und Setter
@@ -110,6 +116,14 @@ public class VideoGameBean {
 		return resultString;
 	}
 
+
+	public Boolean getIsAdmin() {
+		return isAdmin;
+	}
+
+	public void setIsAdmin(Boolean isAdmin) {
+		this.isAdmin = isAdmin;
+	}
 
 	public void setResultString(String resultString) {
 		this.resultString = resultString;

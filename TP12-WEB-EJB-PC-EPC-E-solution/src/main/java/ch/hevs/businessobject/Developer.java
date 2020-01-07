@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Table(name="Developer")
 public class Developer extends Person{
 	private String mail;
-	@OneToMany(mappedBy="developer", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="developer", cascade = CascadeType.REMOVE)
 	private Set<Game> games;
 	
 	public Set<Game> getGames() {

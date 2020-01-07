@@ -18,15 +18,15 @@ public class Game {
 	@ManyToOne (cascade = CascadeType.MERGE)
 	@JoinColumn(nullable = false)
 	private Developer developer;
-	@Override
-	public String toString() {
-		return "Game [id=" + id + ", name=" + name + ", difficultyLevel=" + difficultyLevel + ", ageLimit=" + ageLimit+"]";
-	}
 	@ManyToOne
 	private Category category;
 	@ManyToOne (cascade = CascadeType.MERGE)
 	private Client client;
-	
+
+	@Override
+	public String toString() {
+		return "Game [id=" + id + ", name=" + name + ", difficultyLevel=" + difficultyLevel + ", ageLimit=" + ageLimit+"]";
+	}
 	
 	public Developer getDeveloper() {
 		return developer;

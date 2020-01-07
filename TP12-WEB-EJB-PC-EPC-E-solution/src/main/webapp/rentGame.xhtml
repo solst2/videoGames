@@ -41,8 +41,7 @@
 						<f:facet name="header">
 							<h:outputText value=""></h:outputText>
 						</f:facet>
-						<h:commandButton value="details of the game"
-							action="detailsGame">
+						<h:commandButton value="details of the game" action="detailsGame">
 							<f:setPropertyActionListener
 								target="#{videoGameBean.gameSelected}" value="#{games}" />
 						</h:commandButton>
@@ -58,9 +57,13 @@
 						</h:commandButton>
 					</h:column>
 				</h:dataTable>
+				<br></br>
+				<br></br>
+				<h:commandButton value="go back" action="overviewForm">
+				</h:commandButton>
 			</h:form>
-			<br></br>
 		</h:form>
+		<br></br>
 	</ui:define>
 </ui:composition>
 </html>

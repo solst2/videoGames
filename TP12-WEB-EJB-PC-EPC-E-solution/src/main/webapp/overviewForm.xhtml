@@ -43,19 +43,22 @@
 						<f:facet name="header">
 							<h:outputText value=""></h:outputText>
 						</f:facet>
-						<h:commandButton value="details of the game"
-							action="detailsGame">
+						<h:commandButton value="details of the game" action="detailsGame">
 							<f:setPropertyActionListener
 								target="#{videoGameBean.gameSelected}" value="#{games}" />
 						</h:commandButton>
 					</h:column>
 				</h:dataTable>
-			<br></br>
-			<br></br>
-			<h:commandButton value="rent a game" action="rentGame"></h:commandButton>
-			<br></br>
-			<h:commandButton value="giva a game back" action="giveBackGame"></h:commandButton>
-			</h:form>
+				<br></br>
+				<br></br>
+				<h:commandButton value="rent a game" action="rentGame"></h:commandButton>
+				<br></br>
+				<h:commandButton value="giva a game back" action="giveBackGame"></h:commandButton>
+				<br></br>
+				<br></br>
+				<h:commandButton value="go back" action="welcomeVideoGames">
+				</h:commandButton>
+		</h:form>
 		</h:form>
 	</ui:define>
 </ui:composition>
